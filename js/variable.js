@@ -30,6 +30,11 @@
 // }
 // console.log(x)
 
+
+
+
+
+
 // LET
 
 // 1.
@@ -57,4 +62,35 @@
 // console.log(x); // 15
 
 
+
+
+// CONST 
+
+// 1. 
+
+// const x = 10;
+// const x = 20;
+// console.log(x); // error
+
+// 2.
+
+// const x = 10;
+// {
+//     const x = 20;
+//     console.log(x); // 20
+// }
+// console.log(x); // 10
+
+// 3.
+
+// const x ;
+// x = 10;
+// console.log(x); // error
+
+
+// 4.
+
+// const x = 10;
+// x = x + 5;
+// console.log(x); //error
 
