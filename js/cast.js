@@ -37,7 +37,7 @@ function handelSubmit() {
         } else if (cast == 'st' ) {
             scoler = fees * 100;
         }
-    }
+    } 
 
     console.log("scolarship is : ",scoler);
 }
