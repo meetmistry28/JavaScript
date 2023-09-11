@@ -1,5 +1,5 @@
 function handlSubmit() {
-    event.preventDefault
+    event.preventDefault();
     // console.log("Done");
 
     let P = parseFloat(document.getElementById("P").value);
@@ -11,15 +11,19 @@ function handlSubmit() {
     
     let ans;
 
+    // total = P * r * time/
+
     if (select === 'y') {
-        ans = (P * r * time)/1200;
+        ans = (P * r * time)/100;
     } else if (select === 'm') {
-        ans = (P * r * time)/100
+        ans = (P * r * time)/1200
     }
 
-    // total = P * r * time / 
+    // total = P * r * time 
 
-    document.getElementById("total").innerHTML = total
+    document.getElementById("total").innerHTML = ans
 
     console.log(ans);
+    
+    
 }
