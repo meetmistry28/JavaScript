@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intrest</title>
+    <link rel="stylesheet" href="css/intrest.css">
+    <link rel="stylesheet" href="image">
+</head>
+
+<body>
+    <div class="container">
+        <form action="" onsubmit="handlSubmit()">
+            <div class="box">
+                <input type="text" name="Principle" id="P" placeholder="Please enter Amount">
+                <br><br>
+                <input type="text" name="rate" id="r" placeholder="Rate">
+                <br><br>
+                <input type="text" name="time" id="time" placeholder="Time">
+                <br><br>
+                <div class="sl">
+                    <select name="select" id="select">
+                        <option value="0">--Select--</option>
+                        <option value="y">Year</option>
+                        <option value="m">Mounth</option>
+    
+                    </select>
+                </div>
+                
+                <br>
+
+                <div class="su">
+                    <input type="submit" name="Submit" id="submit">
+                </div>
+
+            </div>
+
+        </form>
+        <br>
+
+        <p>Ans Is: <span id="total"></span></p>
+    </div>
+
+
+
+    <script src="js/intrest.js"></script>
+</body>
+
+</html>
