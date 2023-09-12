@@ -9,13 +9,18 @@ body {
     background-image: url(/image/top-view-desk-minimal-glasses-calculator.jpg);
     background-size: cover;
 }
-.container {
+.container { 
     padding: 2%;
     height: 50%;
     width: 20%;
     background-color: rgb(51, 180, 180);
     margin: 10%;
     border-radius: 20px;
+}
+
+h1 {
+    font-family: monospace;
+    text-align: center;
 }
 
 .box input {

@@ -25,5 +25,4 @@ function handlSubmit() {
 
     console.log(ans);
     
-    
 }
