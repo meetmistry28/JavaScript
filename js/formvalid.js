@@ -1,5 +1,5 @@
 function validateForm() {
-    event.preventDefault()
+    // event.preventDefault()
 
     let name = document.contactForm.name.value;
     let email = document.contactForm.email.value;
@@ -39,7 +39,7 @@ function validateForm() {
         document.getElementById("mobileErr").innerHTML = "Please Enter Mobile Number"
     } else {
 
-        let mobileReg = /^[0]?[123456789]\d{9}$/;
+        let mobileReg = /^[0]?[1-9]\d{9}$/;
 
         if (mobileReg.test (mobile)) {
             document.getElementById("mobileErr").innerHTML = " "
@@ -58,6 +58,49 @@ function validateForm() {
         document.getElementById("countryErr").innerHTML = " "
     }
 
-    
-    return false;
+
+    let gender1 = document.contactForm.gender.value;
+
+    let hobby = document.contactForm.hobbies;
+    // console.log(hobby[0].value , hobby[0].checked);
+
+    let gender1E = true;
+    let hobbyE = true;
+
+
+    if (gender1 === "") {
+        document.getElementById("genderErr").innerHTML = "please select gender."
+    } else {
+        document.getElementById("genderErr").innerHTML = ""
+        gender1E = false;
+        // console.log(gender1E);
+    }
+
+    let flag = false;
+    for (let i = 0; i < hobby.length; i++) {
+        if (hobby[i].checked) {
+            flag = true;
+            break;
+        }
+    }
+
+    if (flag) {
+        document.getElementById("hobbyErr").innerHTML = "";
+        hobbyE = false;
+        // console.log(hobbyE);
+    } else {
+        document.getElementById("hobbyErr").innerHTML = "please select any one hobby."
+    }
+
+    if (nameE || emailE || numberE || countryE || gender1E || hobbyE) {
+        // console.log(nameE , emailE , numberE , countryE , gender1E , hobbyE);
+        return false;
+    } else {
+        return true;
+    }
+
+
+    // console.log(name1,gender,hobby);
+      
+    // return false;
 }

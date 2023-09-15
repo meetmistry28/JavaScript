@@ -15,20 +15,24 @@
         <form action="" onsubmit="handlSubmit()">
             <div class="box">
                 <input type="text" name="Principle" id="P" placeholder="Please enter Amount">
+                <span id="PrincipleErr"></span>
                 <br><br>
                 <input type="text" name="rate" id="r" placeholder="Rate">
+                <span id="rateErr"></span>
                 <br><br>
                 <input type="text" name="time" id="time" placeholder="Time">
+                <span id="timeErr"></span>
                 <br><br>
                 <div class="sl">
                     <select name="select" id="select">
                         <option value="0">--Select--</option>
                         <option value="y">Year</option>
                         <option value="m">Mounth</option>
-    
                     </select>
+                    
+                    <span id="selectErr"></span>
                 </div>
-                
+
                 <br>
 
                 <div class="su">

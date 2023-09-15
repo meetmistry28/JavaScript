@@ -6,7 +6,7 @@ document.getElementById("num2").innerHTML = n2;
 
 let correctAns = n1 + n2;
 
-
+let AnsE = true
 
 // console.log(n1, n2, correctAns);
 
@@ -14,11 +14,25 @@ function handlSubmit() {
     // console.log("ok");    
     
    let userAns =  parseInt(document.getElementById("ans").value);
-
-    if (correctAns == userAns) {
-        alert("correct Ans")
+   
+    if (userAns) {
+        // console.log("y");
+        if (correctAns == userAns) {
+            alert("correct Ans")
+        } else {
+            alert("Invalid Ans. Correct Ans Is:" + correctAns);
+        }
     } else {
-        alert("Invalid Ans. Correct Ans Is:" + correctAns)
+        document.getElementById("ansErr").innerHTML = "Please Enter Ans"
     }
+    
+
+
+
+    // if (correctAns == userAns) {
+    //     alert("correct Ans")
+    // } else {
+    //     alert("Invalid Ans. Correct Ans Is:" + correctAns);
+    // }
 
 }
