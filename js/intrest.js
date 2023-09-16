@@ -15,17 +15,6 @@ function handlSubmit() {
     // console.log(P,r,time,select);
     
     let ans = "";
-
-    // total = P * r * time/
-
-    // if (select === 'y') {
-    //     ans = (P * r * time)/100;
-    // } else if (select === 'm') {
-    //     ans = (P * r * time)/1200
-    // }
-
-    // total = P * r * time 
-
    
 
     if (P > 0 && P <= 10000000) {
