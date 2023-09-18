@@ -32,6 +32,12 @@ function handelsubmit() {
 
     let area;
 
+    if (r === '') {
+        document.getElementById("radius").innerHTML = "Please Enter Value"
+    } else {
+        document.getElementById("radius").innerHTML = ""
+    }
+
     area = 3.14 * r * r;
 
     console.log("Area Of circle is: ",area); 
