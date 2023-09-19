@@ -8,6 +8,9 @@ const RCT_s = 4, RCT_c = 2500;
 const RCT_C_s = 6, RCT_C_c = 12000;
 const BI_s = 12, BI_c = 35000;
 
+let tr_name, tr_s = 0, tr_c = 0;
+
+
 
 const handlTreatment = () => {
     // console.log("ok");
@@ -15,7 +18,7 @@ const handlTreatment = () => {
     let Treatment = document.getElementById("Treatment").value;
     // console.log(Treatment);
 
-    let tr_name, tr_s = 0, tr_c = 0;
+
 
     if (Treatment === 'TC') {
         tr_name = 'Teeth Cleanings'
@@ -46,8 +49,53 @@ const handlTreatment = () => {
     document.getElementById("costing").innerHTML = tr_c;
 
     // console.log(tr_name, tr_s, tr_c);
-    
+
     document.getElementById("Disp").style.display = 'block';
 
+
+
+}
+
+const handlClickApt = () => {
+
+    let aptDate = document.getElementById("apt-date").value;
+
+    let d = new Date(aptDate)
+
+    let costing1 = tr_c/tr_s
+
+    let print = ''
+
+
+    print += "<table border='1'><tr><th>Treatment</th><th>Seating</th><th>Costing</th></tr>"
+
+
+
+    for (let i = 0; i < tr_s; i++) {
+
+        print = print + '<tr>'
+
+        print = print + '<td>'
+        print = print + tr_name;
+        print = print + '</td>'
+
+        print = print + '<td>'
+        print = print + d.toLocaleDateString(d.getDate() + 7);
+        print = print + '</td>'
+
+        print = print + '<td>'
+        print = print + costing1
+        print = print + '</td>' 
+
+        print = print + '</tr>'
+
+        console.log(print);
+        // console.log(d.getDate());
+
+        d.setDate(d.getDate() + 7);
+        
+    }
+
+    document.getElementById("display").innerHTML = print;
 
 }
