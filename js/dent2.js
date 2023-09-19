@@ -64,6 +64,7 @@ const appDate = () => {
         }
     }
 
+    
     print += '</table>';
 
     document.getElementById("tr-plan").innerHTML = print;
