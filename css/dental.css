@@ -11,6 +11,7 @@ span {
 }
 
 .box {
+    margin-top: 80px;
     /* margin-top: 15%; */
     border-style: none;
     padding: 1%;

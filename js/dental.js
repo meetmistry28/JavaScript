@@ -71,13 +71,16 @@ const handlClickApt = () => {
 
 
 
-    for (let i = 0; i < tr_s; i++) {
+    for (let i = 1; i <= tr_s; i++) {
 
         print = print + '<tr>'
 
-        print = print + '<td>'
-        print = print + tr_name;
-        print = print + '</td>'
+        if (i === 1) {
+            print = print + '<td rowspan="' + (tr_s) + '">'
+            print = print + tr_name;
+            print = print + '</td>'
+        }
+        
 
         print = print + '<td>'
         print = print + d.toLocaleDateString(d.getDate() + 7);
