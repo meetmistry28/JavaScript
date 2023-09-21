@@ -23,31 +23,30 @@
 
 // res(30000);
 
-const incrimentCounter = () => {
-    let count = 0;
+// const incrimentCounter = () => {
+//     let count = 0;
 
-    return () => {
-        count = count + 1;
-        console.log(count);
-    }
-}
+//     return () => {
+//         count = count + 1;
+//         console.log(count);
+//     }
+// }
 
-let res = incrimentCounter()
-console.log(res);
+// let res = incrimentCounter()
+// console.log(res);
 
-res();
-res();
-res();
-res();
-res();
+// res();
+// res();
+// res();
+// res();
+// res();
 
 
-let res1 = incrimentCounter()
-console.log(res1);
+// let res1 = incrimentCounter()
+// console.log(res1);
 
-res1();
-res1();
-res1();
-res1();
-res1();
-
+// res1();
+// res1();
+// res1();
+// res1();
+// res1();
