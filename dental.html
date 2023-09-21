@@ -22,64 +22,64 @@
 
 
 
-        <br><br>
+            <br><br>
 
-        <span>Select Treatment:</span>
-        <br><br>
+            <span>Select Treatment:</span>
+            <br><br>
 
-        <select name="Treatment" id="Treatment" onchange="handlTreatment()">
-            <option value="0">--Select--</option>
-            <option value="TC">Teeth Cleanings</option>
-            <option value="F">Fillings</option>
-            <option value="RCT">Root Canal Treatment</option>
-            <option value="RCT_C">RCT + Cover</option>
-            <option value="BI">Braces/invisaling</option>
+            <select name="Treatment" id="Treatment" onchange="handlTreatment()">
+                <option value="0">--Select--</option>
+                <option value="TC">Teeth Cleanings</option>
+                <option value="F">Fillings</option>
+                <option value="RCT">Root Canal Treatment</option>
+                <option value="RCT_C">RCT + Cover</option>
+                <option value="BI">Braces/invisaling</option>
 
-        </select>
-        <br><br>
-        <div id="Disp">
-            <table border="1">
-                <tr>
-                    <th>Treatment</th>
-                    <th>Seating</th>
-                    <th>Costing</th>
-                </tr>
-                <tr>
-                    <th id="tre"></th>
-                    <th id="seating"></th>
-                    <th id="costing"></th>
-                </tr>
+            </select>
+            <br><br>
+            <div id="Disp">
+                <table border="1">
+                    <tr>
+                        <th>Treatment</th>
+                        <th>Seating</th>
+                        <th>Costing</th>
+                    </tr>
+                    <tr>
+                        <th id="tre"></th>
+                        <th id="seating"></th>
+                        <th id="costing"></th>
+                    </tr>
 
-            </table>
+                </table>
+
+                <br><br>
+
+                <span>Select Appointment Date</span>
+
+                <br><br>
+
+                <input type="date" id="apt-date">
+
+                <br><br>
+
+                <button id="book" onclick="handlClickApt()">Book Appointment</button>
+
+
+
+            </div>
 
             <br><br>
 
-            <span>Select Appointment Date</span>
 
-            <br><br>
+            <div id="display">
 
-            <input type="date" id="apt-date">
-
-            <br><br>
-
-            <button id="book" onclick="handlClickApt()">Book Appointment</button>
-
-
-
+            </div>
         </div>
 
-        <br><br>
 
-
-        <div id="display">
-
-        </div>
-        </div>
-
-        
     </div>
 
-    
+
 
 
     <script src="js/dental.js"></script>
