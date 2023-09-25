@@ -485,6 +485,7 @@ let data2 = ['surat','mumbai','panjab','tamilnadu']
 
 
 
+
 //4. Sorting an array in descending order.
 
 // let ans = data1.sort((v,i) => i - v)
