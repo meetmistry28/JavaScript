@@ -101,9 +101,9 @@
 
 
 
-let data = [ 30, 5, 'MISTRY', 80, 60, 'Surti', 50 ];
+// let data = [ 30, 5, 'MISTRY', 80, 60, 'Surti', 50 ];
 
-let data1 = [88,188];
+// let data1 = [88,188];
 
 // console.log(typeof data);
 // console.log(data[5]);
@@ -328,3 +328,101 @@ let data1 = [88,188];
 // task();
 
 
+
+
+//  Array task
+
+
+
+// let data = [ 10, 8, 50, 'meet', 40, 80, 90 ];
+
+// let data1 = [55, 8, 9, 877, 56, 99, 140];
+
+// let data2 = ['Mistry','Meet','Surati','Gujarati'];
+
+
+// 1. map
+// let ans = data.map((v,i) => {
+//     if ( v > 15 ) {
+//         return v;
+//     } else {
+//         return 0;
+//     }
+// })
+
+// console.log(ans);
+
+
+//2.filter 
+
+// let ans = data.filter((v,i) => v > 15 && v < 90)
+//     console.log(ans);
+
+//3. reduse
+
+// let ans = data1.reduce((acc,v,i) => acc + v,0)
+// console.log(ans);
+
+//4. reverse
+
+// let ans = data.reverse()
+// console.log(ans);
+
+
+
+
+//5. sort
+
+//1
+// let ans = data2.sort()
+// console.log(ans);                    //asc
+
+//2
+// let ans = data1.sort((a,b) => a - b)
+// console.log(ans);
+
+//3
+// let ans = data1.sort((a,b) => b - a)
+// console.log(ans);
+
+
+
+
+//6.fill 
+
+// let ans = data.fill(10000,2,5)
+// console.log(ans);
+
+
+//7.findIndex
+
+// let ans = data1.findIndex((v) => v === 56)
+// console.log(ans);
+
+
+let data = [ 10, 8, 50, 'meet', 40, 80, 90, 'meet' ];
+
+let data1 = [55, 8, 9, 877, 56, 99, 140];
+
+let data2 = ['Mistry','Meet','Surati','Gujarati'];
+
+
+//8.includes 
+
+// let ans = data1.includes(55)
+// console.log(ans);
+
+//9.every 
+
+// let ans = data1.every((v) => v > 0)
+// console.log(ans);
+
+
+//10. indexOf
+
+// let ans = data.indexOf("meet")
+// console.log(ans);
+
+
+let ans = data.lastIndexOf("meet")
+console.log(ans);

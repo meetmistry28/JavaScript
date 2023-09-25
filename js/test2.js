@@ -61,6 +61,8 @@ function handlClick() {
     } else if (income >1000000) {
         Return = 20000000
     }
+
+    document.getElementById("disp").innerHTML = print
 }
 
 

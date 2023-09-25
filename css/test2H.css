@@ -1,0 +1,82 @@
+body {
+    background-image: url(/image/money-2724237_1920.jpg);
+    background-size: cover;
+    
+}
+
+
+.container {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.box {
+    background-image: url(/image/image-3033200_1280.jpg);
+    background-size: cover;
+    margin-top: 80px;
+    background-position: center center;
+    height: 50%;
+    width: 30%;
+    padding: 1%;
+    border-style: none;
+    border-radius: 20px;
+    margin-left: 10%;
+    /* background-color: rgb(25, 158, 182); */
+}
+
+#error {
+    color: red;
+}
+
+input{
+    font-family: cursive;
+    background-color: aqua;
+    padding: 1.5%;
+    border-radius: 10px;
+    border-style: none;
+    color: black;
+}
+
+span {
+    font-family: cursive;
+    font-size: large;
+    color: rgb(89, 89, 89);
+}
+
+#occupation {
+    font-family: cursive;
+    color: white;
+}
+
+select {
+    border-style: none;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    padding: 1%;
+    background-color: rgb(150, 150, 150);
+}
+
+#smoke p3 {
+    font-family: cursive;
+    color: rgba(255, 24, 24, 0.686);
+}
+
+#smoke p4 {
+    font-family: cursive;
+    color: rgb(83, 255, 15);
+}
+
+#submit {
+    background-color: greenyellow;
+    border-style: none;
+    padding: 1.2%;
+    border-radius: 10px;
+}
+
+#Ans {
+    background-color: rgb(97, 193, 143);
+    border-radius: 10px;
+    font-family: cursive;
+    color: white;
+}
