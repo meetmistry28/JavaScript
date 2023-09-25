@@ -424,5 +424,5 @@ let data2 = ['Mistry','Meet','Surati','Gujarati'];
 // console.log(ans);
 
 
-let ans = data.lastIndexOf("meet")
+let ans = data.lastIndexOfayyays("meet")
 console.log(ans);
