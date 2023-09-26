@@ -1,4 +1,4 @@
-let array1 = [15, 84, 65, 22, 45, 170, 54]
+// let array1 = [15, 84, 65, 22, 45, 170, 54]
 
 //1.
 
@@ -89,3 +89,62 @@ let array1 = [15, 84, 65, 22, 45, 170, 54]
 
 
 
+
+//9. Removing duplicates from an array.
+
+let arr = ["mistry", "meet", "surti","mistry"];
+
+let arr1 = [56, 55, 3, "meet", 66, 45, 66, 55,"mistry", 66, 41];
+
+let arr2 = ["mistry", "meet", "mistry", "surti", "mistry", "LALA"];
+
+// const dupliArr = (arr1) => {
+//     let newArr = []
+//     for (let i=0; i<arr1.length; i++) {
+//         if (newArr.indexOf(arr1[i]) === -1) {
+//             newArr.push(arr1[i])
+//         }
+//     }
+//     console.log(newArr);
+// }
+// dupliArr(arr1)
+
+// const dupliArr = (arr) => {
+//     let newArr = []
+//     for (let i=0; i<arr.length; i++) {
+//         if (newArr.indexOf(arr[i]) === -1) {
+//             newArr.push(arr[i])
+//         }
+//     }
+//     console.log(newArr);
+// }
+// dupliArr(arr)
+
+
+
+
+
+//10. Merging two arrays into a new array.
+
+// const mergeArr = (arr) => {
+//     let arr4 = [...arr,...arr1];
+//     let Merge = [...new Set(arr4)]
+//     console.log(Merge);
+// }
+// mergeArr(arr)
+
+
+
+
+//11. Splitting an array into two arrays based on a condition.
+
+// const splitArr = (arr,chunk) => {
+//     let temp;
+//     for (let i=0; i<arr.length; i++) {
+//         if (i === "") {
+//             temp = arr.slice(i)
+//         }
+//     }
+//     console.log(temp);
+// }
+// splitArr(arr)
