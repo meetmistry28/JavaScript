@@ -400,29 +400,102 @@
 // console.log(ans);
 
 
-let data = [ 10, 8, 50, 'meet', 40, 80, 90, 'meet' ];
+// let data = [ 10, 8, 50, 'meet', 40, 80, 90, 'meet' ];
 
-let data1 = [55, 8, 9, 877, 56, 99, 140];
+// let data1 = [55, 8, 9, 877, 56, 99, 140];
 
-let data2 = ['Mistry','Meet','Surati','Gujarati'];
+// let data2 = ['Mistry','Meet','Surati','Gujarati'];
 
 
-//8.includes 
+// //8.includes 
 
-// let ans = data1.includes(55)
+// // let ans = data1.includes(55)
+// // console.log(ans);
+
+// //9.every 
+
+// // let ans = data1.every((v) => v > 0)
+// // console.log(ans);
+
+
+// //10. indexOf
+
+// // let ans = data.indexOf("meet")
+// // console.log(ans);
+
+
+// let ans = data.lastIndexOfayyays("meet")
 // console.log(ans);
 
-//9.every 
 
-// let ans = data1.every((v) => v > 0)
+
+
+
+//-----arrays task---------
+//-------------------------
+
+
+
+// let data = [20, 49, 10, 'meet', 58, 79];
+
+// let data1 = [39, 58, 88, 19, 95, 68]
+
+// let data2 = ['surat','mumbai','panjab','tamilnadu']
+
+// // 1. Finding the maximum element in an array.
+
+// let ans = data.filter((v, i) => v > 40)
+// console.log(ans);
+
+// or 
+
+// let ans1 = data.filter((v, i) => {
+//     if (v > 15) {
+//         console.log(v);
+//     }
+// })
+
+
+
+
+//2. Finding the minimum element in an array.
+
+
+// let ans = data.filter((v, i) => v < 50)
 // console.log(ans);
 
 
-//10. indexOf
+//or
 
-// let ans = data.indexOf("meet")
+
+// let ans1 = data.filter((v, i) => {
+//     if (v < 15) {
+//         console.log(v);
+//     }
+// })
+
+
+
+//3. Sorting an array in ascending order
+
+// let ans = data2.sort()
 // console.log(ans);
 
+// or
 
-let ans = data.lastIndexOfayyays("meet")
+let ans = data2.sort((v,i) => v - i )
 console.log(ans);
+
+
+
+
+
+//4. Sorting an array in descending order.
+
+// let ans = data1.sort((v,i) => i - v)
+// console.log(ans);
+
+// or
+
+// let ans = data.sort()
+// console.log(ans);
