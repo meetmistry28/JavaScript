@@ -92,33 +92,27 @@
 
 //9. Removing duplicates from an array.
 
-let arr = ["mistry", "meet", "surti","mistry"];
+let arr = ["mistry", "meet", "surti", "mistry"];
 
-let arr1 = [56, 55, 3, "meet", 66, 45, 66, 55,"mistry", 66, 41];
+let arr1 = [56, 55, 3, 6, 41];
 
-let arr2 = ["mistry", "meet", "mistry", "surti", "mistry", "LALA"];
+let arr2 = [3, 66, 45, 66, 55, 66, 56, 55, 10];
 
-// const dupliArr = (arr1) => {
-//     let newArr = []
-//     for (let i=0; i<arr1.length; i++) {
-//         if (newArr.indexOf(arr1[i]) === -1) {
-//             newArr.push(arr1[i])
+let arr3 = [10, 20, 30, 40, 50, 60, 70]
+
+// const dupliArr = (arr2) => {
+//     let uniqeArr = []
+
+//     arr.map((v) => {
+//         if (!uniqeArr === v) {
+//             newArr.push(v)
 //         }
-//     }
-//     console.log(newArr);
+//     })
+//     console.log(uniqeArr);
 // }
-// dupliArr(arr1)
 
-// const dupliArr = (arr) => {
-//     let newArr = []
-//     for (let i=0; i<arr.length; i++) {
-//         if (newArr.indexOf(arr[i]) === -1) {
-//             newArr.push(arr[i])
-//         }
-//     }
-//     console.log(newArr);
-// }
-// dupliArr(arr)
+// dupliArr(arr2)
+
 
 
 
@@ -126,25 +120,62 @@ let arr2 = ["mistry", "meet", "mistry", "surti", "mistry", "LALA"];
 
 //10. Merging two arrays into a new array.
 
-// const mergeArr = (arr) => {
-//     let arr4 = [...arr,...arr1];
-//     let Merge = [...new Set(arr4)]
-//     console.log(Merge);
+// const mergeArr = (arr1,arr2) => {
+//     let newArr = []
+
+//     for (let i=0; i<arr1.length; i++) {
+//         newArr[i] = arr1[i]
+//     }
+
+//     for (let i=0; i<arr2.length; i++) {
+//         newArr[arr1.length + i] = arr2[i] 
+//     }
+//     console.log(newArr);
+
 // }
-// mergeArr(arr)
+// mergeArr(arr1,arr2)
 
 
 
 
 //11. Splitting an array into two arrays based on a condition.
 
-// const splitArr = (arr,chunk) => {
-//     let temp;
-//     for (let i=0; i<arr.length; i++) {
-//         if (i === "") {
-//             temp = arr.slice(i)
-//         }
-//     }
-//     console.log(temp);
+// const splitArr = (arr1,arr2) => {
+
+
 // }
-// splitArr(arr)
+// splitArr(arr1, aar2)
+
+//13. Rotating an array by a given number of positions.
+
+// const rotatingArr = (arr,n) => {
+//     for (let i=0; i<n; i++) {
+//         let elem = arr.pop()
+//         arr.unshift(elem)
+
+//         console.log(elem,arr);
+//     }
+
+// }
+// rotatingArr(arr3,3);
+
+
+// 14.  Finding the second largest element in an array.
+
+
+// const seclargArr = (arr) => {
+
+//     let ans = arr.sort((a,b) => b-a)
+//     console.log(ans[1]);
+// }
+
+// seclargArr(arr1)
+
+// 15.  Finding the k-th smallest element in an array.
+
+// const ksmallArr = (arr, elem) => {
+//     let ans = arr.sort((a, b) =>a - b)
+//     console.log(ans[elem - 1]);
+// }
+// ksmallArr(arr1, 2)
+
