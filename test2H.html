@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/test2H.css">
+    <title>Insuarance</title>
+    <style>
+        #finalAns {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="box">
+        <form action="#" name="formvalue" onsubmit="return handlSubmit()">
+
+            <input type="text" name="name" id="name" placeholder="Enter Name">
+            <br><br>
+    
+            <span>Birth Date</span>
+            <br>
+            <input type="date" name="date" id="date">
+            <br><br>
+    
+            <input type="number" name="mobile" id="m_no" placeholder="Enter Mobile Number">
+            <br><br>
+    
+            <div id="occupation">
+                <p><input type="radio" name="work" value="salary">Salaried</p>
+                <p><input type="radio" name="work" value="Self_Employee">Self-Employee</p>
+            </div>
+            <br><br>
+    
+            <select name="income" id="income">
+                <option value="0">--Select--</option>
+                <option value="0-3">0 to 3 lakha</option>
+                <option value="3-5">3 to 5 lakh</option>
+                <option value="5-10">5 to 10 lakh</option>
+                <option value="up10">Above 10 lakh</option>
+            </select>
+    
+            <br><br>
+    
+            <input type="text" name="amount" id="amount" placeholder="Please Enter Amount">
+            <span id="error"></span>
+            <br><br>
+    
+            <div id="smoke">
+                <p3><input type="radio" name="smokeing" value="Yes">Yes</p3>
+                <br>
+                <p4><input type="radio" name="smokeing" value="No">No</p4>
+            </div>
+    
+            <br><br>
+    
+            <button id="submit" onclick="return handleClick()">submit</button>
+    
+        </form>
+        <div id="Ans">
+            <div id="temp">
+               
+            </div>
+        </div>
+    
+    </div>
+</div>
+  
+    
+    <script src="js/test2H.js"></script>
+</body>
+
+</html>

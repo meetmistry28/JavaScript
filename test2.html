@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #disp {
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <form action="#" onsubmit="handlSubmit()">
+        <input type="text" name="name" id="name" placeholder="Enrter Name">
+        <br><br>
+        <input type="number" name="b_date" id="b_date" placeholder="Enter Birthdate">
+        <br><br>
+        <input type="number" name="number" id="m_no" placeholder="Enter Mobile No">
+        <br><br>
+
+        <input type="radio" name="Salaried" id="Salaried">Salaried
+        <br>
+        <input type="radio" name="Self-Employee" id="Self-Employee">Self-Employee
+        <br><br>
+
+        <select name="anual-income" id="anual-income" onclick="handlClick()">
+            <option value="0">--Anual Income--</option>
+            <option value="0-3">0-3 Lakh</option>
+            <option value="3-5">3 to 5 Lakh</option>
+            <option value="5-10">5 to 10 Lakh</option>
+            <option value="up10">Above 10 Lakh</option>
+
+        </select>
+        <br><br>
+
+        <input type="radio" name="smoke" id="smoke">Yes
+        <br>
+        <input type="radio" name="smoke_n" id="smoke_n">No
+
+        <br><br>
+
+    
+
+        <input type="submit" value="submit">
+
+        <table border="2">
+            <th>Name</th>
+            <th>Age</th>
+            <th>Mobile No</th>
+            <th>Insurance Amount</th>
+            <th>Primium</th>
+            
+
+            <tr>
+                <th id="name"></th>
+                <th id="age"></th>
+                <th id="mobile_no"></th>
+                <th id="insurance amount"></th>
+                <th id="primium"></th>
+            </tr>
+
+        </table>  
+
+
+        <div id="disp">
+
+        </div>
+    </form>
+    
+    <script src="js/test2.js"></script>
+</body>
+</html>
