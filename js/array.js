@@ -452,6 +452,7 @@ let data2 = ['surat','mumbai','panjab','tamilnadu']
 //     }
 // })
 
+// let ans = data.math()
 
 
 //2. Finding the minimum element in an array.
