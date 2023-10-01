@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="css/bmi.css">
+    <title>BMI</title>
+    <style>
+        .error {
+            color:rgb(244, 0, 0);
+            font-size: 90%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="#" onsubmit="return humenbmi()">
+
+        <h1>BMI</h1>
+
+        <div class="row">
+            <input type="text" name="weghit" id="weghit" placeholder="weghit for kg">
+            <span class="error" id="weghitErr"></span>
+        </div>
+
+        <br><br>
+        <input type="text" name="heghit" id="heghit" placeholder="heghit for cm">
+        <span class="error" id="HeightError"></span>
+        <br><br>
+        <input type="submit" onclick="humenbmi()" name="submit" id="submit">
+        <br>
+        <p>Anser :
+        <div id="bmianser"></div>
+        </p>
+        <br>
+        <p>You are condisan :
+        <div id="anser"></div>
+        </p>
+
+    </form>
+
+   <script src="js/bmi.js"></script>
+</body>
+
+</html>
