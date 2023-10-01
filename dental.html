@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/dental.css">
+
+    <style>
+        #Disp {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="box">
+            <h1>Dental Treatment</h1>.
+
+            <br><br>
+
+            <span>Select Treatment:</span>
+            <br><br>
+
+            <select name="Treatment" id="Treatment" onchange="handlTreatment()">
+                <option value="0">--Select--</option>
+                <option value="TC">Teeth Cleanings</option>
+                <option value="F">Fillings</option>
+                <option value="RCT">Root Canal Treatment</option>
+                <option value="RCT_C">RCT + Cover</option>
+                <option value="BI">Braces/invisaling</option>
+
+            </select>
+            <br><br>
+            <div id="Disp">
+                <table border="1">
+                    <tr>
+                        <th>Treatment</th>
+                        <th>Seating</th>
+                        <th>Costing</th>
+                    </tr>
+                    <tr>
+                        <th id="tre"></th>
+                        <th id="seating"></th>
+                        <th id="costing"></th>
+                    </tr>
+
+                </table>
+
+                <br><br>
+
+                <span>Select Appointment Date</span>
+
+                <br><br>
+
+                <input type="date" id="apt-date">
+
+                <br><br>
+
+                <button id="book" onclick="handlClickApt()">Book Appointment</button>
+
+
+
+            </div>
+
+            <br><br>
+
+
+            <div id="display">
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <script src="js/dental.js"></script>
+
+</body>
+
+</html>
