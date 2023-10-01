@@ -483,6 +483,8 @@ let data2 = ['surat','mumbai','panjab','tamilnadu']
 // let ans = data2.sort((v,i) => v - i )
 // console.log(ans);
 
+ 
+
 
 
 
