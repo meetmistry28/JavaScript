@@ -1,28 +1,50 @@
 let arr1 = [];
+let update = null
 
-const Remove = () => {
-    arr1.slice()
+const handleDelete = (i) => {
+    arr1.splice(i,1)
+
+    Display()
+}
+
+const handleEdit = (i) => {
+    update = i;
+    document.getElementById("name").value = arr1[i]
+}
+
+const Display = () => {
+
+    let print = '<ul>'
+
+    arr1.map((v, i) => { 
+        print += `<li>${v}<button onclick=handleEdit(${i})> E </button><button onclick=handleDelete(${i})> X </button></li>`      
+    });
+
+    print += '</ul>'
+    document.getElementById("input").innerHTML = print 
+
 }
 
 const handlSubmit = () => {
     //  console.log("ok"); 
     event.preventDefault()
 
-    let name = document.getElementById("name").value
-    // console.log(name);
+   let name = document.getElementById("name").value
 
-    let addName = arr1.push(name)
-    // console.log(addName);
+    if (update != null || update === 0) {
+        console.log("update operation");
+        arr1[update] = name
+        update = null;
 
-    if (arr1) {
-        let print = "";
-        arr1.map((v, i) => {
-            print += `<li>${arr1[i]}`
-            print += `<button onclick=handleDelete${i}> X </button>`
-        });
-        document.getElementById("input").innerHTML = print;
+    } else {
+        console.log("Add operation");
+        arr1.push(name)
     }
 
-    return false;
+    document.getElementById("name").value = " "
+    // arr1.push(name)
+
+    Display()
+
 }
 
