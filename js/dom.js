@@ -23,7 +23,6 @@ const handlRemove = (id) => {
     console.log("remove");
     div.remove()
 
-   
 }
 const handlSubmit = () => {
     event.preventDefault()

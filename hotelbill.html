@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Bill</title>
+</head>
+<body>
+    
+    <h1>Hotel Bill Colelection System</h1>
+
+    <form action="" onsubmit="handleSubmit()">
+
+        <h2>Select Date</h2>
+        <input type="date" name="data" id="data" placeholder="Date">
+        <br><br>
+        
+        <h2>Select Table</h2>
+        <select name="table" id="table">
+            <option value="0">--Select Table--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+
+        <br><br>
+
+        <h2>Select Food</h2>
+        <select name="food" id="food">
+            <option value="0">--Select Food--</option>
+            <option value="250">Panjabi</option>
+            <option value="150">Chinees</option>
+            <option value="200">South Indian</option>
+        </select>
+        <br><br>
+
+        <input type="number" name="number" id="member" placeholder="Number Of Member">
+        <br><br>
+
+        <input type="submit" id="submit">
+    </form>
+
+
+    <script src="js/hotelbill.js"></script>
+</body>
+</html>
