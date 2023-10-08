@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(/image/restaurant-interior.jpg);
+    background-size: cover;
+}
+
+.box {
+    margin: auto;
+    margin-top: 2%;
+    padding: 2%;
+    background-image: url(/image/Screenshot\ 2023-10-08\ 124757.png);
+    background-size: cover;
+    background-position: center center;
+    width: 30%;
+    background-color: rgb(0, 202, 114);
+    border-radius: 20px;
+}
+
+h1 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: italic;
+    font-size: larger;
+    color: rgb(28, 163, 48);
+    padding: 9px;
+}
+
+p {
+    color: red;
+    font-size: small;
+    font-family: serif;
+    padding: 4px;
+}
+
+input {
+    padding: 7px;
+    border-radius: 10px;
+    border-style: none;
+    background-color: rgb(246, 255, 0);
+    color: rgb(0, 142, 26);
+}
+
+select {
+    background-color: rgb(246, 255, 0);
+    color: rgb(0, 142, 26);
+    padding: 7px;
+    border-radius: 10px;
+    border-style: none;
+}
+
+#submit {
+    color: rgb(0, 103, 43);
+    background-color: rgb(0, 255, 68);
+}
+
+table {
+    background-color: rgb(248, 149, 0);
+    border-radius: 10px;
+    border-style: none;
+}
+
+td {
+    color: rgb(31, 116, 87);
+    background-color: rgb(109, 210, 0);
+    border-radius: 10px;
+    padding: 5px;
+    border-style: none;
+}

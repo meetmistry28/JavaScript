@@ -1,4 +1,6 @@
 const handlesubmit = () => {
+    event.preventDefault();
+
     let date = document.getElementById("date").value;
     let table = document.getElementById("table").value;
     let food = document.getElementById("food").value;
@@ -20,7 +22,7 @@ const handlesubmit = () => {
     } else {
         localStorage.setItem("hotel", JSON.stringify([obj]))
     }
-    display()  
+    display()
 }
 //     let dateErr = true;
 //     let tableErr = true;
@@ -72,48 +74,48 @@ const display = () => {
     let display = document.getElementById("disp");
     display.innerHTML = ""
 
-    let trElem = document.createElement("tr");
-        let tdElem = document.createElement("th");
-        let tdText = document.createTextNode(v.date);
+    // let trElem = document.createElement("tr");
+    // let tdElem = document.createElement("th");
+    // let tdText = document.createTextNode(v.date);
 
-        tdElem.appendChild(tdText);
-        trElem.appendChild(tdElem);
-        display.appendChild(trElem);
+    // tdElem.appendChild(tdText);
+    // trElem.appendChild(tdElem);
+    // display.appendChild(trElem);
 
-       
-        let tdElem1 = document.createElement("th");
-        let tdText1 = document.createTextNode(v.table);
 
-        
-        tdElem1.appendChild(tdText1);
-        trElem.appendChild(tdElem1);
+    // let tdElem1 = document.createElement("th");
+    // let tdText1 = document.createTextNode(v.table);
 
-        
-        let tdElem2 = document.createElement("th");
-        let tdText2 = document.createTextNode(v.food);
 
-        
-        tdElem2.appendChild(tdText2);
-        trElem.appendChild(tdElem2);
+    // tdElem1.appendChild(tdText1);
+    // trElem.appendChild(tdElem1);
 
-        
-        let tdElem3 = document.createElement("th");
-        let tdText3 = document.createTextNode(v.person);
 
-        
-        tdElem3.appendChild(tdText3);
-        trElem.appendChild(tdElem3);
+    // let tdElem2 = document.createElement("th");
+    // let tdText2 = document.createTextNode(v.food);
 
-        
-        let tdElem4 = document.createElement("th");
-        let tdText4 = document.createTextNode(v.total);
 
-        
-        tdElem4.appendChild(tdText4);
-        trElem.appendChild(tdElem4 );
+    // tdElem2.appendChild(tdText2);
+    // trElem.appendChild(tdElem2);
 
-        
-    hoteldisp.map((v,i) => {
+
+    // let tdElem3 = document.createElement("th");
+    // let tdText3 = document.createTextNode(v.person);
+
+
+    // tdElem3.appendChild(tdText3);
+    // trElem.appendChild(tdElem3);
+
+
+    // let tdElem4 = document.createElement("th");
+    // let tdText4 = document.createTextNode(v.total);
+
+
+    // tdElem4.appendChild(tdText4);
+    // trElem.appendChild(tdElem4);
+
+
+    hoteldisp.map((v, i) => {
         let trElem = document.createElement("tr");
         let tdElem = document.createElement("td");
         let tdText = document.createTextNode(v.date);
@@ -122,37 +124,37 @@ const display = () => {
         trElem.appendChild(tdElem);
         display.appendChild(trElem);
 
-       
+
         let tdElem1 = document.createElement("td");
         let tdText1 = document.createTextNode(v.table);
 
-        
+
         tdElem1.appendChild(tdText1);
         trElem.appendChild(tdElem1);
 
-        
+
         let tdElem2 = document.createElement("td");
         let tdText2 = document.createTextNode(v.food);
 
-        
+
         tdElem2.appendChild(tdText2);
         trElem.appendChild(tdElem2);
 
-        
+
         let tdElem3 = document.createElement("td");
         let tdText3 = document.createTextNode(v.person);
 
-        
+
         tdElem3.appendChild(tdText3);
         trElem.appendChild(tdElem3);
 
-        
+
         let tdElem4 = document.createElement("td");
         let tdText4 = document.createTextNode(v.total);
 
-        
+
         tdElem4.appendChild(tdText4);
-        trElem.appendChild(tdElem4 );
+        trElem.appendChild(tdElem4);
     });
 }
 display()

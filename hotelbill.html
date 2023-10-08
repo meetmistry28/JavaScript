@@ -1,60 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hotel Bill</title>
+    <link rel="stylesheet" href="css/hotelbill.css">
 </head>
+
 <body>
-    <h1>Hotel Bill Collection System</h1>
-    <form action="#" onsubmit="handlesubmit()">
-        <p>Date</p>
-        <input type="date" id="date">
-        <br>
-        <span id="dateErr"></span>
-        <br>
-        <p>Table</p>
-        <select name="" id="table">
-            <option value="0">--select--</option>
-            <option value="table-1">1</option>
-            <option value="table-2">2</option>
-            <option value="table-3">3</option>
-            <option value="table-4">4</option>
-            <option value="table-5">5</option>
-            <option value="table-6">6</option>
-            <option value="table-7">7</option>
-            <option value="table-8">8</option>
-            <option value="table-9">9</option>
-            <option value="table-10">10</option>
-        </select>
-        <br>
-        <span id="tableErr"></span>
-        <p>Food</p>
-        <select name="" id="food">
-            <option value="0">--select--</option>
-            <option value="250">Panjabi</option>
-            <option value="150">Chainees</option>
-            <option value="200">South Indian</option>
-        </select>
-        <br>
-        <span id="foodErr"></span>
-        <p>Person</p>
-        <input type="number" id="person" placeholder="enter number of Person">
-        <br>
-        <span id="personErr"></span>
-        <br><br>
-        <input type="submit" id="submit">
-    </form>
-    <br><br>
-    <table border="1" id="disp">
-        <tr>
-            <th>Date</th>
-            <th>Table</th>
-            <th>Food</th>
-            <th>No Of Person</th>
-            <th>Total Bill</th>
-        </tr>
-    </table>
-    
+    <div class="container">
+        <div class="box">
+            <h1>Hotel Bill Collection System</h1>
+            <form action="#" onsubmit="handlesubmit()">
+                <p>Date</p>
+                <input type="date" id="date">
+                <br>
+                <span id="dateErr"></span>
+                <br>
+                <p>Table</p>
+                <select name="" id="table">
+                    <option value="0">--select--</option>
+                    <option value="table-1">1</option>
+                    <option value="table-2">2</option>
+                    <option value="table-3">3</option>
+                    <option value="table-4">4</option>
+                    <option value="table-5">5</option>
+                    <option value="table-6">6</option>
+                    <option value="table-7">7</option>
+                    <option value="table-8">8</option>
+                    <option value="table-9">9</option>
+                    <option value="table-10">10</option>
+                </select>
+                <br>
+                <span id="tableErr"></span>
+                <p>Food</p>
+                <select name="" id="food">
+                    <option value="0">--select--</option>
+                    <option value="250">Panjabi</option>
+                    <option value="150">Chainees</option>
+                    <option value="200">South Indian</option>
+                </select>
+                <br>
+                <span id="foodErr"></span>
+                <p>Person</p>
+                <input type="number" id="person" placeholder="enter number of Person">
+                <br>
+                <span id="personErr"></span>
+                <br><br>
+
+                <div class="subbox">
+                    <input type="submit" id="submit">
+                </div>
+
+
+            </form>
+            <br><br>
+            <table border="1" id="disp">
+                <tr>
+                    <th>Date</th>
+                    <th>Table</th>
+                    <th>Food</th>
+                    <th>No Of Person</th>
+                    <th>Total Bill</th>
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+
     <script src="js/hotelbill.js"></script>
 </body>

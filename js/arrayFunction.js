@@ -92,13 +92,13 @@
 
 //9. Removing duplicates from an array.
 
-let arr = ["mistry", "meet", "surti", "mistry"];
+// let arr = ["mistry", "meet", "surti", "mistry"];
 
-let arr1 = [56, 55, 3, 6, 41];
+// let arr1 = [56, 55, 3, 6, 41];
 
-let arr2 = [3, 66, 45, 66, 55, 66, 56, 55, 10];
+// let arr2 = [3, 66, 45, 66, 55, 66, 56, 55, 10];
 
-let arr3 = [10, 20, 30, 40, 50, 60, 70]
+// let arr3 = [10, 20, 30, 40, 50, 60, 70]
 
 // const dupliArr = (arr2) => {
 //     let uniqeArr = []
