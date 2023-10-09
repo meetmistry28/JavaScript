@@ -138,4 +138,5 @@ const handleremove = (id) => {
     // localStorage.setItem("hoteldata", JSON.stringify(fdata));
 
     window.location.reload();
+
 }
