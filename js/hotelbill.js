@@ -1,5 +1,6 @@
 const handleSubmit = () => {
-    // console.log("okkk");
+    let id = Math.floor(Math.random() * 1000);
+    
     let date = document.getElementById("date").value;
     let table = document.getElementById("table").value;
     let food = document.getElementById("food").value;
@@ -18,17 +19,19 @@ const handleSubmit = () => {
             foodName = 'chinees';
             rate = 150;
         } else if (food === "200") {
-            foodName = 'south - india';
+            foodName = 'south - indian';
             rate = 200;
         }
 
         let total = rate * Person
         let obj = {
+            
             "Date": date,
             "Table": table,
             "Food": foodName,
             "Parson": Person,
             "TotalBill": total,
+            id
         }
 
 
@@ -40,9 +43,9 @@ const handleSubmit = () => {
             localHotel.push(obj);
             localStorage.setItem("hoteldata", JSON.stringify(localHotel));
         }
-        display()
+        
     }
-
+    display();
 }
 
 
@@ -51,7 +54,7 @@ const display = () => {
 
     let dispElem = document.getElementById("disp");
 
-    let finalBill = localHotel.reduce((acc, v) => acc + v.TotalBill, 0);
+    let finalBill = localHotel.reduce((acc, v) => acc + v.TotalBill, 0); 
     console.log(finalBill);
 
     localHotel.map((v, i) => {
@@ -92,15 +95,16 @@ const display = () => {
         tdElem5.appendChild(tdTxt5);
         trElem.appendChild(tdElem5);
 
-        let tdElemX = document.createElement("td");
-        let tdTxtX = document.createTextNode("X");
-        tdElemX.setAttribute("onclick", "handleremove(" + id + ")");
+        let tdElemX = document.createElement("button");
+        console.log("ok");
+        let tdTxtX = document.createTextNode("Delete");
+        tdElemX.setAttribute("onclick", "handleremove(" + v.id + ")");
         tdElemX.appendChild(tdTxtX);
         trElem.appendChild(tdElemX);
 
         dispElem.appendChild(trElem);
         // dispElem.appendChild(divElem);
-
+        
     })
 
 
@@ -108,7 +112,7 @@ const display = () => {
 
     let thFelem = document.createElement("th");
     thFelem.setAttribute("colspan", "5");
-    let thFTxt = document.createTextNode("Final counter");
+    let thFTxt = document.createTextNode("Total Bill");
 
     let tdFelem = document.createElement("td");
     let tdFTxt = document.createTextNode(finalBill);
@@ -125,5 +129,13 @@ const display = () => {
 display();
 
 const handleremove = (id) => {
+    console.log(id);
+    let localHotel = JSON.parse(localStorage.getItem("hoteldata"));
+    let fdata = localHotel.filter((v) => v.id != id);
 
+    console.log(fdata);
+
+    // localStorage.setItem("hoteldata", JSON.stringify(fdata));
+
+    window.location.reload();
 }

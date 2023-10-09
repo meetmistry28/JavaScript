@@ -38,9 +38,10 @@
 
         <p>Select Food</p>
         <select name="food" id="food">
+            <option value="0">--select--</option>
             <option value="250">Punjabi</option>
             <option value="150">chinees</option>
-            <option value="200">South india</option>
+            <option value="200">South indian</option>
         </select>
         <span class="error" id="s2error"></span>
         <br><br>
@@ -50,7 +51,7 @@
         <span class="error" id="ierror"></span>
         <br><br>
 
-        <input type="submit">
+        <input type="submit" id="submit">
     </form>
 
     <br><br>
@@ -62,6 +63,7 @@
             <th>Food</th>
             <th>No.Of Person</th>
             <th>TotalBill</th>
+            <th>Action</th>
         </tr>
     </table>
 

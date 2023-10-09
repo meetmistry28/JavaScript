@@ -79,3 +79,11 @@ td {
     padding: 5px;
     border-style: none;
 }
+
+button {
+    color: rgb(185, 194, 191);
+    background-color: rgb(210, 25, 0);
+    border-radius: 10px;
+    padding: 5px;
+    border-style: none;
+}
