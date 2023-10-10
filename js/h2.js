@@ -5,51 +5,63 @@ const handlesubmit = () => {
   let id = Math.floor(Math.random() * 1000);
 
   let date = document.getElementById("date").value;
-  let table = document.getElementById("tnumber").value;
+  let table = document.getElementById("table").value;
   let food = document.getElementById("food").value;
   let Number = document.getElementById("pnumber").value;
 
-//   let dateE = true;
-//   let  tableE = true;
-//   let foodE = true;
-//   let NumberE = true;
+  let price = "";
 
-//   if(date === '0'){
-//     document.getElementById("tableerror").innerHTML =
-//     "Please select date";
-//  }else{
-//   document.getElementById("tableerror").innerHTML = "";
-//   dateE = false;
+  if (food === "Panjabi") {
+    price = 250
+  } else if (food === "Chinees") {
+    price = 150
+  } else if (food === "South-Indian") {
+    price = 200
+  }
 
-//  }
+  let total = price * Number;
 
-//   if ( table === "0") {
-//     document.getElementById("tableerror").innerHTML =
-//       "Please select your table no";
-//   } else {
-//     document.getElementById("tableerror").innerHTML = "";
-//     tableE = false;
-//   }
-//   if (food === "0") {
-//     document.getElementById("fooderror").innerHTML =
-//       "Please select your food";
-//   } else {
-//     document.getElementById("fooderror").innerHTML = "";
-//     foodE = false;
-//   }
-//   if (Number === " ") {
-//     document.getElementById("personerror").innerHTML =
-//       "Please Enter your number";
-//   } else {
-//     document.getElementById("personerror").innerHTML = "";
-//     NumberE = false;
-//   }
+  //   let dateE = true;
+  //   let  tableE = true;
+  //   let foodE = true;
+  //   let NumberE = true;
 
-//   if (dateE || tableE || foodE || NumberE) {
-//     return false;
-//   } else {
-//     return true;
-//   }
+  //   if(date === '0'){
+  //     document.getElementById("tableerror").innerHTML =
+  //     "Please select date";
+  //  }else{
+  //   document.getElementById("tableerror").innerHTML = "";
+  //   dateE = false;
+
+  //  }
+
+  //   if ( table === "0") {
+  //     document.getElementById("tableerror").innerHTML =
+  //       "Please select your table no";
+  //   } else {
+  //     document.getElementById("tableerror").innerHTML = "";
+  //     tableE = false;
+  //   }
+  //   if (food === "0") {
+  //     document.getElementById("fooderror").innerHTML =
+  //       "Please select your food";
+  //   } else {
+  //     document.getElementById("fooderror").innerHTML = "";
+  //     foodE = false;
+  //   }
+  //   if (Number === " ") {
+  //     document.getElementById("personerror").innerHTML =
+  //       "Please Enter your number";
+  //   } else {
+  //     document.getElementById("personerror").innerHTML = "";
+  //     NumberE = false;
+  //   }
+
+  //   if (dateE || tableE || foodE || NumberE) {
+  //     return false;
+  //   } else {
+  //     return true;
+  //   }
 
 
 
@@ -58,20 +70,22 @@ const handlesubmit = () => {
 
   if (updetIndex !== null) {
 
-    let updatedObj  = {
-      id:updetIndex,
+    let updatedObj = {
+      id: updetIndex,
       date,
       table,
       food,
-      Number
+      Number,
+      total
     }
+    
     //console.log(updatedObj);
     tabledata[updetIndex] = updatedObj;
     localStorage.setItem("hotel", JSON.stringify(tabledata));
     updetIndex = null;
-  
+
   } else {
-   
+
     let obj = {
       id,
       date,
@@ -106,17 +120,17 @@ const handleedit = (id) => {
   //console.log(tabledata);
 
   let index = tabledata.findIndex((item) => item.id === id);
- 
+
 
   document.getElementById("date").value = tabledata[index].date;
-  document.getElementById("tnumber").value = tabledata[index].table;
+  document.getElementById("table").value = tabledata[index].table;
   document.getElementById("food").value = tabledata[index].food;
   document.getElementById("pnumber").value = tabledata[index].Number;
 
 
   updetIndex = index;
 
- // window.location.reload();
+  // window.location.reload();
 }
 const Display = () => {
   let tabledata = JSON.parse(localStorage.getItem("hotel"));

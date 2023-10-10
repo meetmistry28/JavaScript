@@ -1,7 +1,7 @@
 let updetIndex = null;
 const handleSubmit = () => {
     let id = Math.floor(Math.random() * 1000);
-    
+
     let date = document.getElementById("date").value;
     let table = document.getElementById("table").value;
     let food = document.getElementById("food").value;
@@ -26,25 +26,24 @@ const handleSubmit = () => {
 
         let total = rate * Person
         let obj = {
-            
+
             "Date": date,
             "Table": table,
             "Food": foodName,
             "Parson": Person,
             "TotalBill": total,
-            id
         }
 
 
         let localHotel = JSON.parse(localStorage.getItem("hoteldata"));
 
         if (localHotel == null) {
-            localStorage.setItem("hoteldata", JSON.stringify([obj]));
+            
         } else {
             localHotel.push(obj);
             localStorage.setItem("hoteldata", JSON.stringify(localHotel));
         }
-        
+
     }
     display();
 }
@@ -55,7 +54,7 @@ const display = () => {
 
     let dispElem = document.getElementById("disp");
 
-    let finalBill = localHotel.reduce((acc, v) => acc + v.TotalBill, 0); 
+    let finalBill = localHotel.reduce((acc, v) => acc + v.TotalBill, 0);
     console.log(finalBill);
 
     localHotel.map((v, i) => {
@@ -105,7 +104,7 @@ const display = () => {
 
         dispElem.appendChild(trElem);
         // dispElem.appendChild(divElem);
-        
+
     })
 
 
@@ -147,17 +146,17 @@ const handleedit = (id) => {
     //console.log(id);
     let tabledata = JSON.parse(localStorage.getItem("hotel"));
     //console.log(tabledata);
-  
+
     let index = tabledata.findIndex((item) => item.id === id);
-   
-  
+
+
     document.getElementById("date").value = tabledata[index].date;
     document.getElementById("tnumber").value = tabledata[index].table;
     document.getElementById("food").value = tabledata[index].food;
     document.getElementById("pnumber").value = tabledata[index].Number;
-  
-  
+
+
     updetIndex = index;
-  
-   // window.location.reload();
-  }
+
+    // window.location.reload();
+}

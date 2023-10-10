@@ -5,51 +5,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-
-
     <link rel="stylesheet" href="css/hotelbill.css">
+
+
+    <link rel="stylesheet" href="css/hotel.css">
 </head>
 
 <body>
-    <div id="container">
+    <div id="form-container">
         <div class="box">
             <h1>Hotel Reservation Form</h1>
-            <form action="" onsubmit="handlesubmit()">
-                
+            <form action="" onsubmit="return handlesubmit()">
+                <div class="form-group">
                     <label for="date">Date:</label>
                     <input type="date" name="date" id="date" placeholder="Enter date">
                     <span class="error" id="dateErr"></span>
-                
+                </div>
                 <br><br>
-                
+
+                <div class="form-group">
                     <label for="tnumber">Table:</label>
-                    <input type="number" name="tnumber" id="tnumber" placeholder="Enter table number">
+                    <select name="table" id="table">
+
+                        <option value="0">--select--</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
                     <span class="error" id="tnumberErr"></span>
-                
+                </div>
+
                 <br><br>
-                
+
+                <div class="form-group">
                     <label for="food">Food:</label>
                     <select name="food" id="food">
                         <option value="0">--Select--</option>
-                        <option value="250">Panjabi</option>
-                        <option value="150">Chinees</option>
-                        <option value="200">South Indian</option>
+                        <option value="Panjabi">Panjabi</option>
+                        <option value="Chinees">Chinees</option>
+                        <option value="South-Indian">South Indian</option>
                     </select>
                     <span class="error" id="foodErr"></span>
-                
-<br><br>
-                
-                    <label for="pnumber">No. of persons:</label>
+                </div>
+
+                <br><br>
+
+                <div class="form-group">
+                    <p>No. of persons:</p>
                     <input type="number" name="pnumber" id="pnumber" placeholder="Enter number of persons">
                     <span class="error" id="personErr"></span>
-                
-<br><br>
-                
+                </div>
+
+                <br><br>
+
+                <div class="form-group">
                     <input type="submit" id="submit">
-        
-                    <br><br>
+                </div>
             </form>
+
+            <br><br>
 
             <table id="disp" border="1">
                 <thead>
@@ -65,8 +86,8 @@
                 </thead>
 
             </table>
-
         </div>
+
     </div>
 
 
