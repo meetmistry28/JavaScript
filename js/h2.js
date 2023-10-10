@@ -1,176 +1,181 @@
-let updetIndex = null;
+let update = null;
 const handlesubmit = () => {
-  //console.log("ok");
-  // event.preventDefault();
-  let id = Math.floor(Math.random() * 1000);
-
-  let date = document.getElementById("date").value;
-  let table = document.getElementById("tnumber").value;
-  let food = document.getElementById("food").value;
-  let Number = document.getElementById("pnumber").value;
-
-//   let dateE = true;
-//   let  tableE = true;
-//   let foodE = true;
-//   let NumberE = true;
-
-//   if(date === '0'){
-//     document.getElementById("tableerror").innerHTML =
-//     "Please select date";
-//  }else{
-//   document.getElementById("tableerror").innerHTML = "";
-//   dateE = false;
-
-//  }
-
-//   if ( table === "0") {
-//     document.getElementById("tableerror").innerHTML =
-//       "Please select your table no";
-//   } else {
-//     document.getElementById("tableerror").innerHTML = "";
-//     tableE = false;
-//   }
-//   if (food === "0") {
-//     document.getElementById("fooderror").innerHTML =
-//       "Please select your food";
-//   } else {
-//     document.getElementById("fooderror").innerHTML = "";
-//     foodE = false;
-//   }
-//   if (Number === " ") {
-//     document.getElementById("personerror").innerHTML =
-//       "Please Enter your number";
-//   } else {
-//     document.getElementById("personerror").innerHTML = "";
-//     NumberE = false;
-//   }
-
-//   if (dateE || tableE || foodE || NumberE) {
-//     return false;
-//   } else {
-//     return true;
-//   }
-
-
-
-
-  let tabledata = JSON.parse(localStorage.getItem("hotel"));
-
-  if (updetIndex !== null) {
-
-    let updatedObj  = {
-      id:updetIndex,
-      date,
-      table,
-      food,
-      Number
-    }
-    //console.log(updatedObj);
-    tabledata[updetIndex] = updatedObj;
-    localStorage.setItem("hotel", JSON.stringify(tabledata));
-    updetIndex = null;
-  
-  } else {
-   
-    let obj = {
-      id,
-      date,
-      table,
-      food,
-      Number,
-    }
-    if (tabledata) {
-      tabledata.push(obj);
-      localStorage.setItem("hotel", JSON.stringify(tabledata));
-
+    var date = document.getElementById("tdate").value;
+    var table = document.getElementById("table").value;
+    var fooddp = document.getElementById("food").value;
+    var nopar = document.getElementById("parson").value;
+    var food;
+    var id = Math.floor(Math.random() * 100);
+    let localdata = JSON.parse(localStorage.getItem("hoteldata"));  
+    if (nopar == '' || date == '') {
+        event.preventDefault()
+        document.getElementById("error").innerHTML='Please Enter Parson ';
+    }else if(nopar <= 0){
+        event.preventDefault()
+        document.getElementById("error").innerHTML='Invlade Parson';
     } else {
-      localStorage.setItem("hotel", JSON.stringify([obj]));
+        if(update == null){
+            if (fooddp === "Panjabi") {
+                food = "Panjabi";
+                rate = 250 * nopar;
+            } else if (fooddp === "Chinees") {
+                food = "Chinees";
+                rate = 150 * nopar;
+            } else if (fooddp === "SouthIndian") {
+                food = "South-Indian";
+                rate = 200 * nopar;
+            }
+    var obj={
+                "id": id,
+                "Date": date,
+                "Table": table,
+                "Food": food,
+                "Parson": nopar,
+                "TotalBill": rate,
+            }
+          
+            if (localdata == null) {
+                localStorage.setItem("hoteldata", JSON.stringify([obj]));
+            } else {
+                localdata.push(obj);
+                localStorage.setItem("hoteldata", JSON.stringify(localdata));
+            }
+            console.log("Data-Added");
+        }else{  
+            if (fooddp == "Panjabi") {
+                food = "Panjabi";
+                rate = 250 * nopar;
+            } else if (fooddp == "Chinees") {
+                food = "Chinees";
+                rate = 150 * nopar;
+            } else if (fooddp == "SouthIndian") {
+                food = "South-Indian";
+                rate = 200 * nopar;
+            } 
+           let obj={
+                id:update,
+                date,
+                table,
+                food,
+                nopar,
+                rate
+            } 
+            let index = localdata.findIndex((v)=>v.id == update);               
+            localdata[index]=obj;
+            localStorage.setItem("hoteldata", JSON.stringify(localdata));
+   
+            window.location.reload()
+        }
+        update=null;
     }
-  }
+   }
 
-  window.location.reload();
+const display = () => {
+    var localdata = JSON.parse(localStorage.getItem("hoteldata"));
+   
+    var tableref = document.getElementById("disp");
+
+    var finelbill = localdata.reduce((acc, v) => acc + v.TotalBill, 0);
+
+
+    localdata.map((v, i) => {
+        
+        let trdele = document.createElement("tr");
+        trdele.setAttribute("id","(disp-"+v.id+")")
+        let td0 = document.createElement("td");
+        let th0 = document.createTextNode(i + 1);
+
+        let tdele = document.createElement("td");
+        let tdd = document.createTextNode(v.Date);
+
+
+        let td1 = document.createElement("td");
+        let th1 = document.createTextNode(v.Table);
+
+        let td2 = document.createElement("td");
+        let th2 = document.createTextNode(v.Food);
+
+        let td3 = document.createElement("td");
+        let th3 = document.createTextNode(v.Parson);
+
+        let td4 = document.createElement("td");
+        td4.setAttribute("id","bill1");
+        let th4 = document.createTextNode(v.TotalBill);
+
+        let btnelem = document.createElement("button");
+        btnelem.setAttribute("onclick", "handleremove(" + v.id + ")")
+        let btntxt = document.createTextNode('Delete ');
+
+        let btnedit = document.createElement("button");
+        btnedit.setAttribute("onclick", "handleedit(" + v.id + ")")
+        let btedit = document.createTextNode("Edit");
+
+
+
+        tdele.appendChild(tdd);
+        td0.appendChild(th0);
+        trdele.appendChild(td0)
+        trdele.appendChild(tdele);
+        tableref.appendChild(trdele)
+
+
+
+        td1.appendChild(th1);
+        trdele.appendChild(td1)
+
+        td2.appendChild(th2);
+        trdele.appendChild(td2)
+
+        td3.appendChild(th3);
+        trdele.appendChild(td3)
+
+        td4.appendChild(th4);
+        trdele.appendChild(td4)
+
+        btnedit.appendChild(btedit);
+        trdele.appendChild(btnedit);
+
+        btnelem.appendChild(btntxt);
+        trdele.appendChild(btnelem);
+
+    });
+
+    let ntr = document.createElement("tr");
+    let nth = document.createElement("th");
+    nth.setAttribute('colspan', '5');
+    let ntht = document.createTextNode("Finle Counter ");
+
+    let ntd = document.createElement("td")
+    ntd.setAttribute("id", "bill");
+    let ntdt = document.createTextNode("Rs." + finelbill);
+
+    nth.appendChild(ntht);
+    ntr.appendChild(nth);
+    ntd.appendChild(ntdt);
+    ntr.appendChild(ntd);
+    tableref.appendChild(ntr);
+    
 }
 
-const handleremove = (id) => {
-  //console.log(id);
-  let tabledata = JSON.parse(localStorage.getItem("hotel"));
-
-  let fdata = tabledata.filter((item) => item.id != id);
-  localStorage.setItem("hotel", JSON.stringify(fdata));
-
-  window.location.reload();
+const handleedit = (id) => {    
+   
+    let localdata = JSON.parse(localStorage.getItem('hoteldata'));
+    let index = localdata.findIndex((v)=>v.id==id)
+    // console.log(index);
+    document.getElementById("parson").value = localdata[index].Parson;
+    document.getElementById("food").value = localdata[index].Food;
+    document.getElementById("table").value = localdata[index].Table;
+    document.getElementById("tdate").value = localdata[index].Date;
+    
+    update= localdata[index].id;
 }
-const handleedit = (id) => {
-  //console.log(id);
-  let tabledata = JSON.parse(localStorage.getItem("hotel"));
-  //console.log(tabledata);
+const handleremove = (i) => {
+let localdata = JSON.parse(localStorage.getItem('hoteldata'));
 
-  let index = tabledata.findIndex((item) => item.id === id);
- 
-
-  document.getElementById("date").value = tabledata[index].date;
-  document.getElementById("tnumber").value = tabledata[index].table;
-  document.getElementById("food").value = tabledata[index].food;
-  document.getElementById("pnumber").value = tabledata[index].Number;
-
-
-  updetIndex = index;
-
- // window.location.reload();
+   let fdata= localdata.filter((v)=>v.id !== i)
+    localStorage.setItem("hoteldata", JSON.stringify(fdata));
+    window.location.reload()
 }
-const Display = () => {
-  let tabledata = JSON.parse(localStorage.getItem("hotel"));
-  let tableref = document.getElementById("disp");
+window.onload=display();
 
-  if (tabledata) {
-    tabledata.map((item) => {
-      let newRow = document.createElement("tr");
 
-      let dateCell = document.createElement("td");
-      let dateCellTxt = document.createTextNode(item.date);
-      dateCell.appendChild(dateCellTxt);
-      newRow.appendChild(dateCell);
-      tableref.appendChild(newRow);
-
-      let tableNumberCell = document.createElement("td");
-      let tableNumberCellTxt = document.createTextNode(item.table);
-      tableNumberCell.appendChild(tableNumberCellTxt);
-      newRow.appendChild(tableNumberCell);
-      tableref.appendChild(newRow);
-
-      let foodCell = document.createElement("td");
-      let foodCellTxt = document.createTextNode(item.food);
-      foodCell.appendChild(foodCellTxt);
-      newRow.appendChild(foodCell);
-      tableref.appendChild(newRow);
-
-      let personNumberCell = document.createElement("td");
-      let personNumberCellTxt = document.createTextNode(item.Number);
-      personNumberCell.appendChild(personNumberCellTxt);
-      newRow.appendChild(personNumberCell);
-      tableref.appendChild(newRow);
-
-      let totalCell = document.createElement("td");
-      let totalCellTxt = document.createTextNode(item.food * item.Number);
-      totalCell.appendChild(totalCellTxt);
-      newRow.appendChild(totalCell);
-      tableref.appendChild(newRow);
-
-      let btnElem = document.createElement("button");
-      btnElem.setAttribute("onclick", "handleremove(" + item.id + ")");
-      let btnText = document.createTextNode("X");
-      btnElem.appendChild(btnText);
-      newRow.appendChild(btnElem);
-      tableref.appendChild(newRow);
-
-      let btnEdit = document.createElement("button");
-      btnEdit.setAttribute("onclick", "handleedit(" + item.id + ")");
-      let btneditText = document.createTextNode("E");
-      btnEdit.appendChild(btneditText);
-      newRow.appendChild(btnEdit);
-      tableref.appendChild(newRow);
-    })
-  }
-}
-
-Display();

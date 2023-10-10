@@ -1,163 +1,181 @@
-let updetIndex = null;
-const handleSubmit = () => {
-    let id = Math.floor(Math.random() * 1000);
-    
-    let date = document.getElementById("date").value;
+let update = null;
+const handlesubmit = () => {
+    let date = document.getElementById("tdate").value;
     let table = document.getElementById("table").value;
-    let food = document.getElementById("food").value;
-    let Person = document.getElementById("person").value;
-
-    let foodName;
-    let rate;
-
-    if (date === " " || table === "0" || Person === "") {
-        document.getElementById("d-error").innerHTML = ""
+    let fooddp = document.getElementById("food").value;
+    let nopar = document.getElementById("parson").value;
+    let food;
+    let id = Math.floor(Math.random() * 100);
+    let localdata = JSON.parse(localStorage.getItem("hoteldata"));  
+    if (nopar == '' || date == '') {
+        event.preventDefault()
+        document.getElementById("error").innerHTML='Please Enter Parson ';
+    }else if(nopar <= 0){
+        event.preventDefault()
+        document.getElementById("error").innerHTML='Invlade Parson';
     } else {
-        if (food === "250") {
-            foodName = 'Punjabi';
-            rate = 250;
-        } else if (food === "150") {
-            foodName = 'chinees';
-            rate = 150;
-        } else if (food === "200") {
-            foodName = 'south - indian';
-            rate = 200;
+        if(update == null){
+            if (fooddp === "Panjabi") {
+                food = "Panjabi";
+                rate = 250 * nopar;
+            } else if (fooddp === "Chinees") {
+                food = "Chinees";
+                rate = 150 * nopar;
+            } else if (fooddp === "SouthIndian") {
+                food = "South-Indian";
+                rate = 200 * nopar;
+            }
+    let obj={
+                "id": id,
+                "Date": date,
+                "Table": table,
+                "Food": food,
+                "Parson": nopar,
+                "TotalBill": rate,
+            }
+          
+            if (localdata == null) {
+                localStorage.setItem("hoteldata", JSON.stringify([obj]));
+            } else {
+                localdata.push(obj);
+                localStorage.setItem("hoteldata", JSON.stringify(localdata));
+            }
+            console.log("Data-Added");
+        }else{  
+            if (fooddp == "Panjabi") {
+                food = "Panjabi";
+                rate = 250 * nopar;
+            } else if (fooddp == "Chinees") {
+                food = "Chinees";
+                rate = 150 * nopar;
+            } else if (fooddp == "SouthIndian") {
+                food = "South-Indian";
+                rate = 200 * nopar;
+            } 
+           let obj={
+                id:update,
+                date,
+                table,
+                food,
+                nopar,
+                rate
+            } 
+            let index = localdata.findIndex((v)=>v.id == update);               
+            localdata[index]=obj;
+            localStorage.setItem("hoteldata", JSON.stringify(localdata));
+   
+            window.location.reload()
         }
-
-        let total = rate * Person
-        let obj = {
-            
-            "Date": date,
-            "Table": table,
-            "Food": foodName,
-            "Parson": Person,
-            "TotalBill": total,
-            id
-        }
-
-
-        let localHotel = JSON.parse(localStorage.getItem("hoteldata"));
-
-        if (localHotel == null) {
-            localStorage.setItem("hoteldata", JSON.stringify([obj]));
-        } else {
-            localHotel.push(obj);
-            localStorage.setItem("hoteldata", JSON.stringify(localHotel));
-        }
-        
+        update=null;
     }
-    display();
-}
-
+   }
 
 const display = () => {
-    let localHotel = JSON.parse(localStorage.getItem("hoteldata"));
-
-    let dispElem = document.getElementById("disp");
-
-    let finalBill = localHotel.reduce((acc, v) => acc + v.TotalBill, 0); 
-    console.log(finalBill);
-
-    localHotel.map((v, i) => {
-        // console.log(v);
-        let id = Math.floor(Math.random() * 1000);
-
-        let trElem = document.createElement("tr");
-        trElem.setAttribute("id", id)
-
-        let tdElem = document.createElement("td");
-        let tdTxt = document.createTextNode(i + 1)
-        tdElem.appendChild(tdTxt);
-        trElem.appendChild(tdElem);
-
-
-        let tdElem1 = document.createElement("td");
-        let tdTxt1 = document.createTextNode(v.Date)
-        tdElem1.appendChild(tdTxt1);
-        trElem.appendChild(tdElem1);
-
-        let tdElem2 = document.createElement("td");
-        let tdTxt2 = document.createTextNode(v.Table)
-        tdElem2.appendChild(tdTxt2);
-        trElem.appendChild(tdElem2);
-
-        let tdElem3 = document.createElement("td");
-        let tdTxt3 = document.createTextNode(v.Food)
-        tdElem3.appendChild(tdTxt3);
-        trElem.appendChild(tdElem3);
-
-        let tdElem4 = document.createElement("td");
-        let tdTxt4 = document.createTextNode(v.Parson);
-        tdElem4.appendChild(tdTxt4);
-        trElem.appendChild(tdElem4);
-
-        let tdElem5 = document.createElement("td");
-        let tdTxt5 = document.createTextNode(v.TotalBill);
-        tdElem5.appendChild(tdTxt5);
-        trElem.appendChild(tdElem5);
-
-        let tdElemX = document.createElement("button");
-        console.log("ok");
-        let tdTxtX = document.createTextNode("Delete");
-        tdElemX.setAttribute("onclick", "handleremove(" + v.id + ")");
-        tdElemX.appendChild(tdTxtX);
-        trElem.appendChild(tdElemX);
-
-        dispElem.appendChild(trElem);
-        // dispElem.appendChild(divElem);
-        
-    })
-
-
-    let trFelem = document.createElement("tr");
-
-    let thFelem = document.createElement("th");
-    thFelem.setAttribute("colspan", "5");
-    let thFTxt = document.createTextNode("Total Bill");
-
-    let tdFelem = document.createElement("td");
-    let tdFTxt = document.createTextNode(finalBill);
-
-    thFelem.appendChild(thFTxt);
-    trFelem.appendChild(thFelem);
-
-    tdFelem.appendChild(tdFTxt);
-    trFelem.appendChild(tdFelem);
-
-    dispElem.appendChild(trFelem);
-}
-
-display();
-
-const handleremove = (id) => {
-    console.log(id);
-    let localHotel = JSON.parse(localStorage.getItem("hoteldata"));
-    let fdata = localHotel.filter((v) => v.id != id);
-
-    console.log(fdata);
-
-    // localStorage.setItem("hoteldata", JSON.stringify(fdata));
-
-    window.location.reload();
-
-}
-
-
-const handleedit = (id) => {
-    //console.log(id);
-    let tabledata = JSON.parse(localStorage.getItem("hotel"));
-    //console.log(tabledata);
-  
-    let index = tabledata.findIndex((item) => item.id === id);
+    let localdata = JSON.parse(localStorage.getItem("hoteldata"));
    
-  
-    document.getElementById("date").value = tabledata[index].date;
-    document.getElementById("tnumber").value = tabledata[index].table;
-    document.getElementById("food").value = tabledata[index].food;
-    document.getElementById("pnumber").value = tabledata[index].Number;
-  
-  
-    updetIndex = index;
-  
-   // window.location.reload();
-  }
+    let tableref = document.getElementById("disp");
+
+    let finelbill = localdata.reduce((acc, v) => acc + v.TotalBill, 0);
+
+
+    localdata.map((v, i) => {
+        
+        let trdele = document.createElement("tr");
+        trdele.setAttribute("id","(disp-"+v.id+")")
+        let td0 = document.createElement("td");
+        let th0 = document.createTextNode(i + 1);
+
+        let tdele = document.createElement("td");
+        let tdd = document.createTextNode(v.Date);
+
+
+        let td1 = document.createElement("td");
+        let th1 = document.createTextNode(v.Table);
+
+        let td2 = document.createElement("td");
+        let th2 = document.createTextNode(v.Food);
+
+        let td3 = document.createElement("td");
+        let th3 = document.createTextNode(v.Parson);
+
+        let td4 = document.createElement("td");
+        td4.setAttribute("id","bill1");
+        let th4 = document.createTextNode(v.TotalBill);
+
+        let btnelem = document.createElement("button");
+        btnelem.setAttribute("onclick", "handleremove(" + v.id + ")")
+        let btntxt = document.createTextNode('Delete ');
+
+        let btnedit = document.createElement("button");
+        btnedit.setAttribute("onclick", "handleedit(" + v.id + ")")
+        let btedit = document.createTextNode("Edit");
+
+
+
+        tdele.appendChild(tdd);
+        td0.appendChild(th0);
+        trdele.appendChild(td0)
+        trdele.appendChild(tdele);
+        tableref.appendChild(trdele)
+
+
+
+        td1.appendChild(th1);
+        trdele.appendChild(td1)
+
+        td2.appendChild(th2);
+        trdele.appendChild(td2)
+
+        td3.appendChild(th3);
+        trdele.appendChild(td3)
+
+        td4.appendChild(th4);
+        trdele.appendChild(td4)
+
+        btnedit.appendChild(btedit);
+        trdele.appendChild(btnedit);
+
+        btnelem.appendChild(btntxt);
+        trdele.appendChild(btnelem);
+
+    });
+
+    let ntr = document.createElement("tr");
+    let nth = document.createElement("th");
+    nth.setAttribute('colspan', '5');
+    let ntht = document.createTextNode("Total Bill");
+
+    let ntd = document.createElement("td")
+    ntd.setAttribute("id", "bill");
+    let ntdt = document.createTextNode("Rs." + finelbill);
+
+    nth.appendChild(ntht);
+    ntr.appendChild(nth);
+    ntd.appendChild(ntdt);
+    ntr.appendChild(ntd);
+    tableref.appendChild(ntr);
+    
+}
+
+const handleedit = (id) => {    
+   
+    let localdata = JSON.parse(localStorage.getItem('hoteldata'));
+    let index = localdata.findIndex((v)=>v.id==id)
+    // console.log(index);
+    document.getElementById("parson").value = localdata[index].Parson;
+    document.getElementById("food").value = localdata[index].Food;
+    document.getElementById("table").value = localdata[index].Table;
+    document.getElementById("tdate").value = localdata[index].Date;
+    
+    update= localdata[index].id;
+}
+const handleremove = (i) => {
+let localdata = JSON.parse(localStorage.getItem('hoteldata'));
+
+   let fdata= localdata.filter((v)=>v.id !== i)
+    localStorage.setItem("hoteldata", JSON.stringify(fdata));
+    window.location.reload()
+}
+window.onload=display();
+
+

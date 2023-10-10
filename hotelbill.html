@@ -4,72 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Bill</title>
+    <title>Document</title>
     <link rel="stylesheet" href="css/hotelbill.css">
+
 </head>
 
 <body>
-    <div class="container">
+    <div class="cointener">
         <div class="box">
-            <h1>Hotel Bill Collection System</h1>
-            
-    <form action="" onsubmit="return handleSubmit()">
-        <input type="date" name="date" id="date">
-        <span class="error" id="d-error"></span>
-        <br><br>
+            <h1>HOTEL BILL COLLECTION SYSTEM</h1>
+            <form action="" onsubmit="return handlesubmit()">
+                <input type="date" id="tdate">
+                <br><br>
+                <p>Select Table :-</p>
+                <select name="table" id="table">
+                    <option value="#">--Select--</option>
+                    <option value="1">TABLE-1</option>
+                    <option value="2">TABLE-2</option>
+                    <option value="3">TABLE-3</option>
+                    <option value="4">TABLE-4</option>
+                    <option value="5">TABLE-5</option>
+                    <option value="6">TABLE-6</option>
+                    <option value="7">TABLE-7</option>
+                    <option value="8">TABLE-8</option>
+                    <option value="9">TABLE-9</option>
+                    <option value="10">TABLE-10</option>
+                </select>
+                <br><br>
+                <p>Food:- </p>
+                <select name="food" id="food">
+                    <option value="#">--Select--</option>
+                    <option value="Panjabi">Panjabi</option>
+                    <option value="Chinees">Chinees</option>
+                    <option value="SouthIndian">South-Indian</option>
+                </select>
 
-        <p>Select Table</p>
-        <select name="table" id="table">
-            
-            <option value="0">--select--</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
-        <span class="error" id="s1error"></span>
-        <br><br>
+                <br><br>
 
-        <p>Select Food</p>
-        <select name="food" id="food">
-            <option value="0">--select--</option>
-            <option value="250">Punjabi</option>
-            <option value="150">chinees</option>
-            <option value="200">South indian</option>
-        </select>
-        <span class="error" id="s2error"></span>
-        <br><br>
+                <p>No.OF Parson:- </p>
+                <input type="number" id="parson">
+                <br><br>
+                <p id="error"></p><br>
 
-        <p>Select No Of Person</p>
-        <input type="number" name="person" id="person">
-        <span class="error" id="ierror"></span>
-        <br><br>
-
-        <input type="submit" id="submit">
-    </form>
-
-    <br><br>
-    <table id="disp" border="1">
-        <tr>
-            <th>Sr.no</th>
-            <th>Date</th>
-            <th>Table</th>
-            <th>Food</th>
-            <th>No.Of Person</th>
-            <th>TotalBill</th>
-            <th>Action</th>
-        </tr>
-    </table>
-
+                <input type="submit" id="submit">
+                <br><br>
+            </form>
+            <table id="disp" border="1">
+                <tr>
+                    <th>Sr No.</th>
+                    <th>Date</th>
+                    <th>Table</th>
+                    <th>Food</th>
+                    <th>No.Of Parson</th>
+                    <th>Total Bill</th>
+                    <th>Action</th>
+                </tr>
+            </table>
         </div>
 
     </div>
-
     <script src="js/hotelbill.js"></script>
 </body>
+
+</html>
