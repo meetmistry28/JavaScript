@@ -4,58 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel billing</title>
+    <title>Document</title>
+
+
+
+    <link rel="stylesheet" href="css/hotelbill.css">
 </head>
 
 <body>
+    <div id="container">
+        <div class="box">
+            <h1>Hotel Reservation Form</h1>
+            <form action="" onsubmit="handlesubmit()">
+                
+                    <label for="date">Date:</label>
+                    <input type="date" name="date" id="date" placeholder="Enter date">
+                    <span class="error" id="dateErr"></span>
+                
+                <br><br>
+                
+                    <label for="tnumber">Table:</label>
+                    <input type="number" name="tnumber" id="tnumber" placeholder="Enter table number">
+                    <span class="error" id="tnumberErr"></span>
+                
+                <br><br>
+                
+                    <label for="food">Food:</label>
+                    <select name="food" id="food">
+                        <option value="0">--Select--</option>
+                        <option value="250">Panjabi</option>
+                        <option value="150">Chinees</option>
+                        <option value="200">South Indian</option>
+                    </select>
+                    <span class="error" id="foodErr"></span>
+                
+<br><br>
+                
+                    <label for="pnumber">No. of persons:</label>
+                    <input type="number" name="pnumber" id="pnumber" placeholder="Enter number of persons">
+                    <span class="error" id="personErr"></span>
+                
+<br><br>
+                
+                    <input type="submit" id="submit">
+        
+                    <br><br>
+            </form>
 
-    <form action="" onsubmit="return handleSubmit()">
-        <input type="date" name="date" id="date">
-        <span class="error" id="d-error"></span>
-        <br><br>
+            <table id="disp" border="1">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Table</th>
+                        <th>Food</th>
+                        <th>Person No</th>
+                        <th>Total</th>
+                        <th>Action</th>
 
-        <select name="table" id="table">
-            <option value="0">----select table number----</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
-        <span class="error" id="s1error"></span>
-        <br><br>
+                    </tr>
+                </thead>
 
-        <select name="food" id="food">
-            <option value="250">Punjabi</option>
-            <option value="150">chinees</option>
-            <option value="200">South india</option>
-        </select>
-        <span class="error" id="s2error"></span>
-        <br><br>
+            </table>
 
-        no.of.Person<input type="number" name="person" id="person">
-        <span class="error" id="ierror"></span>
-        <br><br>
-
-        <input type="submit">
-    </form>
-
-    <table id="disp" border="1">
-        <tr>
-            <th>Sr.no</th>
-            <th>Date</th>
-            <th>Table</th>
-            <th>Food</th>
-            <th>No.Of Person</th>
-            <th>TotalBill</th>
-        </tr>
-    </table>
-
+        </div>
+    </div>
 
 
 

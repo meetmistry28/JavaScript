@@ -1,3 +1,4 @@
+let updetIndex = null;
 const handleSubmit = () => {
     let id = Math.floor(Math.random() * 1000);
     
@@ -140,3 +141,23 @@ const handleremove = (id) => {
     window.location.reload();
 
 }
+
+
+const handleedit = (id) => {
+    //console.log(id);
+    let tabledata = JSON.parse(localStorage.getItem("hotel"));
+    //console.log(tabledata);
+  
+    let index = tabledata.findIndex((item) => item.id === id);
+   
+  
+    document.getElementById("date").value = tabledata[index].date;
+    document.getElementById("tnumber").value = tabledata[index].table;
+    document.getElementById("food").value = tabledata[index].food;
+    document.getElementById("pnumber").value = tabledata[index].Number;
+  
+  
+    updetIndex = index;
+  
+   // window.location.reload();
+  }
