@@ -39,55 +39,82 @@
 // // e1.getAllInfo()
 
 
-class computer {
-    name;
-    price = 70000;
-    company;
+// class computer {
+//     name;
+//     price = 70000;
+//     company;
 
-    constructor (name,company) {
-        this.name = name;
-        this.company = company
-    }
-    basic_detail = () => {
-        console.log("computer name is: ",this.name);
-        console.log("computer Company is: ",this.company);
-        console.log("computer price is:" ,this.price);
-    }
-}
-class processor extends computer {
-    proname;
-    version;
+//     constructor (name,company) {
+//         this.name = name;
+//         this.company = company
+//     }
+//     basic_detail = () => {
+//         console.log("computer name is: ",this.name);
+//         console.log("computer Company is: ",this.company);
+//         console.log("computer price is:" ,this.price);
+//     }
+// }
+// class processor extends computer {
+//     proname;
+//     version;
 
-    constructor (name,company,proname,version) {
-        super(name,company)
-        this.proname = proname;
-        this.version = version;
+//     constructor (name,company,proname,version) {
+//         super(name,company)
+//         this.proname = proname;
+//         this.version = version;
 
-    }
-    allDedail = () => {
-        console.log("computer Company is: ",this.company);
-        console.log("computer name is: ",this.name);
-        console.log("computer price is:" ,this.price);
-        console.log("processor Is:",this.proname);
-        console.log("version is",this.version);
-    }
-}
-let c1 = new processor('pavilion','hp','i5','13th');
-// console.log(detail);
+//     }
+//     allDedail = () => {
+//         console.log("computer Company is: ",this.company);
+//         console.log("computer name is: ",this.name);
+//         console.log("computer price is:" ,this.price);
+//         console.log("processor Is:",this.proname);
+//         console.log("version is",this.version);
+//     }
+// }
+// let c1 = new processor('pavilion','hp','i5','13th');
+// // console.log(detail);
 
-c1.allDedail()
+// c1.allDedail()
 
-class car {
-    model_name;
-    man_year;
-    company;
+// class Car {
+//     model_name;
+//     company;
+//     man_year = 2020;
+//     price = 2500000;
 
-    constructor (mn,c) {
-        this.company = c;
-        this.model_name = mn
-    }
-}
+//     constructor(model_name, company) {
+//         this.model_name = model_name;
+//         this.company = company
+//     }
 
-class cdetail {
-    
-}
+//     displayInfo = () => {
+//         console.log("Your Model Name:", this.model_name);
+//         console.log("Your Company Name Is:", this.company);
+//         console.log("Your Manufacturing Year", this.man_year);
+//         console.log("Your Price:", this.price);
+//     }
+// }
+
+
+
+// class Model extends Car {
+//     name;
+//     expiry;
+
+//     constructor(model_name, company, name, expiry) {
+//         super(model_name, company)
+//         this.name = name;
+//         this.expiry = expiry;
+//     }
+
+//     alldisplayInfo = () => {
+//         this.displayInfo()
+//         console.log("Your Name Is:", this.name);
+//         console.log("Your Expiry Year:", this.expiry);
+//     }
+// }
+
+
+// let m1 = new Model('charger', 'dodge', 'meet', 2045)
+// m1.alldisplayInfo();
