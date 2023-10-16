@@ -1,103 +1,139 @@
-let totalAmount = document.getElementById("total-amount");
-let userAmount = document.getElementById("user-amount");
-const checkAmountButton = document.getElementById("check-amount");
-const totalAmountButton = document.getElementById("total-amount-button");
-const productTitle = document.getElementById("product-title");
-const errorMessage = document.getElementById("budget-error");
-const productTitleError = document.getElementById("product-title-error");
-const productCostError = document.getElementById("product-cost-error");
-const amount = document.getElementById("amount");
-const expenditureValue = document.getElementById("expenditure-value");
-const balanceValue = document.getElementById("balance-amount");
-const list = document.getElementById("list");
-let tempAmount = 0;
+class Budget {
+  constructor() {
+      this.budgetInput = document.querySelector("#budget_input");
+      this.ExpenseName = document.querySelector("#expense_name");
+      this.expensesInput = document.querySelector("#expensesInput");
 
-//Set Budget Part
-totalAmountButton.addEventListener("click", () => {
-  tempAmount = totalAmount.value;
-  //empty or negative input
-  if (tempAmount === "" || tempAmount < 0) {
-    errorMessage.classList.remove("hide");
-  } else {
-    errorMessage.classList.add("hide");
-    //Set Budget
-    amount.innerHTML = tempAmount;
-    //Set Balance
-    balanceValue.innerText = tempAmount - expenditureValue.innerText;
-    //Clear Input Box
-    totalAmount.value = "";
+      this.budget = document.querySelector("#budget_value");
+      this.expenses = document.querySelector("#Expenses_value");
+      this.balance = document.querySelector("#balance_value");
+
+      this.ExpensesData = [];
+      this.updateindex = null;
+
+
   }
+
+  handleBudget() {
+      // console.log("handleBudget");
+
+      let budget = parseInt(this.budgetInput.value);
+      // console.log(budget);
+
+      if (budget < 0) {
+          document.getElementById("budgetErr").innerHTML = 'Please Enter Valid Budget';
+      } else {
+          document.getElementById("budgetErr").innerHTML = '';
+
+          this.budget.innerHTML = budget;
+          this.handleDisplay();
+      }
+      event.preventDefault();
+  }
+
+  handleExpenses() {
+      // console.log("handleExpenses");
+
+      if (this.ExpenseName.value === '') {
+          document.getElementById("expense_nameErr").innerHTML = 'Please Enter Expenses';
+      } else {
+          document.getElementById("expense_nameErr").innerHTML = '';
+      }
+
+      if (this.expensesInput.value < 0 || this.expensesInput.value === '') {
+          document.getElementById("expenseErr").innerHTML = 'Please Enter Valid Expenses Value';
+      } else {
+          document.getElementById("expenseErr").innerHTML = '';
+      }
+      event.preventDefault()
+  }
+
+
+  ExpenseDisplay(id) {
+
+
+      let pdiv = document.getElementById("expenselist");
+      let divElem = document.createElement("div")
+      divElem.setAttribute("class", "d-flex justify-content-between");
+      // let i = document.getElementById("record-", +id);
+      divElem.setAttribute("id", "record-" + id);
+
+      let p1 = document.createElement("p");
+      p1.setAttribute("class", "list-item");
+
+      let p1taxt = document.createTextNode(this.ExpenseName.value);
+      p1.appendChild(p1taxt);
+
+      divElem.appendChild(p1);
+
+
+      let p2 = document.createElement("p");
+      p2.setAttribute("class", "list-item");
+
+      let p2taxt = document.createTextNode(this.expensesInput.value);
+      p2.appendChild(p2taxt);
+
+      divElem.appendChild(p2);
+
+
+      let p3 = document.createElement("p");
+      p3.setAttribute("class", "list-item");
+
+      let DA1 = document.createElement("a");
+      DA1.setAttribute("href", "#");
+
+      let DI1 = document.createElement("i");
+      DI1.setAttribute("class", "fa-solid fa-pen-to-square edit_css");
+      DA1.addEventListener("click", () => this.handleEdit(id));
+
+      p3.appendChild(DA1);
+      DA1.appendChild(DI1);
+
+
+      let DA = document.createElement("a");
+      DA.setAttribute("href", "#");
+
+      let DI = document.createElement("i");
+      DI.setAttribute("class", "fa-solid fa-trash")
+
+      DA.addEventListener("click", () => this.handleremove(id));
+
+      p3.appendChild(DA);
+      DA.appendChild(DI);
+
+
+
+
+      divElem.appendChild(p3);
+
+      pdiv.appendChild(divElem)
+
+  }
+
+  handleDisplay() {
+
+      let budgetVal = parseInt(this.budget.textContent);
+
+      let balanceVal = 0;
+      let expensesVal = 100
+      0
+      balanceVal = budgetVal - expensesVal;
+
+      this.balance.innerHTML = balanceVal;
+
+
+
+  }
+}
+
+let b = new Budget();
+
+let submitform = document.getElementById("submit_form");
+submitform.addEventListener("submit", function () {
+  b.handleBudget();
 });
 
-//Function To Disable Edit and Delete Button
-const disableButtons = (bool) => {
-  let editButtons = document.getElementsByClassName("edit");
-  Array.from(editButtons).forEach((element) => {
-    element.disabled = bool;
-  });
-};
-
-//Function To Modify List Elements
-const modifyElement = (element, edit = false) => {
-  let parentDiv = element.parentElement;
-  let currentBalance = balanceValue.innerText;
-  let currentExpense = expenditureValue.innerText;
-  let parentAmount = parentDiv.querySelector(".amount").innerText;
-  if (edit) {
-    let parentText = parentDiv.querySelector(".product").innerText;
-    productTitle.value = parentText;
-    userAmount.value = parentAmount;
-    disableButtons(true);
-  }
-  balanceValue.innerText = parseInt(currentBalance) + parseInt(parentAmount);
-  expenditureValue.innerText =
-    parseInt(currentExpense) - parseInt(parentAmount);
-  parentDiv.remove();
-};
-
-//Function To Create List
-const listCreator = (expenseName, expenseValue) => {
-  let sublistContent = document.createElement("div");
-  sublistContent.classList.add("sublist-content", "flex-space");
-  list.appendChild(sublistContent);
-  sublistContent.innerHTML = `<p class="product">${expenseName}</p><p class="amount">${expenseValue}</p>`;
-  let editButton = document.createElement("button");
-  editButton.classList.add("fa-solid", "fa-pen-to-square", "edit");
-  editButton.style.fontSize = "1.2em";
-  editButton.addEventListener("click", () => {
-    modifyElement(editButton, true);
-  });
-  let deleteButton = document.createElement("button");
-  deleteButton.classList.add("fa-solid", "fa-trash-can", "delete");
-  deleteButton.style.fontSize = "1.2em";
-  deleteButton.addEventListener("click", () => {
-    modifyElement(deleteButton);
-  });
-  sublistContent.appendChild(editButton);
-  sublistContent.appendChild(deleteButton);
-  document.getElementById("list").appendChild(sublistContent);
-};
-
-//Function To Add Expenses
-checkAmountButton.addEventListener("click", () => {
-  //empty checks
-  if (!userAmount.value || !productTitle.value) {
-    productTitleError.classList.remove("hide");
-    return false;
-  }
-  //Enable buttons
-  disableButtons(false);
-  //Expense
-  let expenditure = parseInt(userAmount.value);
-  //Total expense (existing + new)
-  let sum = parseInt(expenditureValue.innerText) + expenditure;
-  expenditureValue.innerText = sum;
-  //Total balance(budget - total expense)
-  const totalBalance = tempAmount - sum;
-  balanceValue.innerText = totalBalance;
-  //Create list
-  listCreator(productTitle.value, userAmount.value);
-  //Empty inputs
-  productTitle.value = "";
-  userAmount.value = "";
+let expensesform = document.getElementById("expenses_form");
+expensesform.addEventListener("submit", function () {
+  b.handleExpenses();
 });

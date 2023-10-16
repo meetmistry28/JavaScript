@@ -1,82 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Budget App</title>
-    <!-- Font Awesome Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    />
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/budget2.css" />
-  </head>
-  <body>
-    <div class="wrapper">
-      <div class="container">
-        <div class="sub-container">
-          <!-- Budget -->
-          <div class="total-amount-container">
-            <h3>Budget</h3>
-            <p class="hide error" id="budget-error">
-              Value cannot be empty or negative
-            </p>
-            <input
-              type="number"
-              id="total-amount"
-              placeholder="Enter Total Amount"
-            />
-            <button class="submit" id="total-amount-button">Set Budget</button>
-          </div>
 
-          <!-- Expenditure -->
-          <div class="user-amount-container">
-            <h3>Expenses</h3>
-            <p class="hide error" id="product-title-error">
-              Values cannot be empty
-            </p>
-            <input
-              type="text"
-              class="product-title"
-              id="product-title"
-              placeholder="Enter Title of Product"
-            />
-            <input
-              type="number"
-              id="user-amount"
-              placeholder="Enter Cost of Product"
-            />
-            <button class="submit" id="check-amount">Check Amount</button>
-          </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/budgetapp.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>BUDGET APP</h2>
+        <br>
+        <div class="row">
+            <div class="col-lg-5 box">
+                <form action="" id="submit_form">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Please Enter Your Budget</label>
+                        <br>
+                        <input type="number" class="form-control" id="budget_input" placeholder="">
+                        <span id="budgetErr" class="error"></span>
+                        <br>
+                        <button class="btn btn-outline-success">Calculate</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-7 box1">
+                <div class="Budget_child">
+                    <h4>BUDGET</h4>
+                    <i class="fa-solid fa-money-bill-1"></i>
+                    <br><br>
+                    <span class="span1 dollar">$</span>
+                    <span id="budget_value">0</span>
+                </div>
+
+                <div class="Budget_child1">
+                    <h4>EXPENSES</h4>
+                    <i class="fa-regular fa-credit-card"></i>
+                    <br><br>
+                    <span class="span1 expe_doll">$</span>
+                    <span id="Expenses_value">0</span>
+                </div>
+
+                <div class="Budget_child2">
+                    <h4>BALANCE</h4>
+                    <i class="fa-solid fa-dollar-sign"></i>
+                    <br><br>
+                    <span class="span1 bala_doll">$</span>
+                    <span id="balance_value">0</span>
+                </div>
+
+            </div>
+            <br><br>
+
         </div>
-        <!-- Output -->
-        <div class="output-container flex-space">
-          <div>
-            <p>Total Budget</p>
-            <span id="amount">0</span>
-          </div>
-          <div>
-            <p>Expenses</p>
-            <span id="expenditure-value">0</span>
-          </div>
-          <div>
-            <p>Balance</p>
-            <span id="balance-amount">0</span>
-          </div>
+        <br><br>
+
+        <div class="row box5">
+
+            <div class="col-lg-5 box3">
+                <form action="" id="expenses_form">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Please Enter Your Expense</label>
+                        <br>
+                        <input type="text" class="form-control" id="expense_name" placeholder="">
+                        <span id="expense_nameErr" class="error"></span>
+                        <br>
+                        <label for="exampleFormControlInput1" class="form-label">Please Enter Expense Amount</label>
+                        <br>
+                        <input type="number" class="form-control" id="expensesInput" placeholder="">
+                        <span id="expenseErr" class="error"></span>
+                        <br>
+                        <button class="btn btn-outline-danger">Add Expense</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-5">
+                <div id="expenselist">
+                    <div class="d-flex justify-content-between">
+                        <h5 class="list-item">Expense Title</h5>
+                        <h5 class="list-item">Expense Value</h5>
+                        <h5 class="list-item">Icon</h5>
+                    </div>
+                </div>
+            </div>
+
         </div>
-      </div>
-      <!-- List -->
-      <div class="list">
-        <h3>Expense List</h3>
-        <div class="list-container" id="list"></div>
-      </div>
     </div>
-    <!-- Script -->
-    <script src="js/budget2.js"></script>
-  </body>
+
+    <script src="js/budgetapp.js"></script>
+</body>
+
 </html>
