@@ -14,7 +14,7 @@ class Budget {
         let budget = parseInt(tgis.getbudget.value);
         console.log(show_budget);
 
-        if (budget < 0 || budget === '' || isNaN(budget)) {
+        if  (budget < 0 || budget === '' || isNaN(budget)) {
             document.getElementById("error1").innerHTML = 'Please Enter Budget'
         } else {
             document.getElementById("error1").innerHTML = ""
