@@ -1,126 +1,192 @@
 class Budget {
-    budget;
-    expence;
-    expamount;
     constructor() {
-        this.budget = document.getElementById("budget");
-        this.expence = document.getElementById("expence");
-        this.expamount = document.getElementById("expamount");
-    }
-    handlesubmit() {
-        event.preventDefault()
-        let bgt = parseInt(this.budget.value)
-        if (bgt < 0) {
-            document.getElementById("error1").innerHTML = "Please Enter Valid Value";
-        } else if (bgt == '' || isNaN(bgt)) {
-            document.getElementById("error1").innerHTML = "Please Enter Value";
-        } else {
-            document.getElementById("error1").innerHTML = " ";
-            document.getElementById("ff1").innerHTML = '$' + this.budget.value;
-            this.handledata();
-        }
+        this.getbudget = document.querySelector("#budget");
+
+        this.show_budget = document.querySelector("#ff1");
+        this.show_expence = document.querySelector("#ff2");
+        this.show_total = document.querySelector("#ff3");
 
     }
-    handledata() {
-        let bgt = parseInt(this.budget.value);
-        let exp = 0;
-        let balance = bgt - exp;
-        document.getElementById("ff3").innerHTML = '$' + balance;
-    }
 
-    handleexpnse() {
-        let bgt = parseInt(this.budget.value)
-        let exp = parseInt(this.expamount.value)
-        let id = Math.floor(Math.random() * 1000);
-        if (exp == '' || this.expence.value == '') {
-            event.preventDefault();
-            document.getElementById("error3").innerHTML = "Please Enter Expence Amount";
-            document.getElementById("error2").innerHTML = "Please Enter Valid Expence";
+    handlBudget() {
+        event.preventDefault();
+
+        let budget = parseInt(tgis.getbudget.value);
+        console.log(show_budget);
+
+        if (budget < 0 || budget === '' || isNaN(budget)) {
+            document.getElementById("error1").innerHTML = 'Please Enter Budget'
         } else {
-            document.getElementById("error3").innerHTML = " ";
-            document.getElementById("error2").innerHTML = " ";
-            let obj = {
-                "id": id,
-                "balance": bgt,
-                "name": this.expence.value,
-                "cost": exp,
-            }
-            let localdata = JSON.parse(localStorage.getItem("budget"))
-            if (localdata == null) {
-                localStorage.setItem("budget", JSON.stringify([obj]));
-            } else {
-                localdata.push(obj);
-                localStorage.setItem("budget", JSON.stringify(localdata));
-            }
+            document.getElementById("error1").innerHTML = ""
+
+            this.show_budget.innerHTML = budget;
             this.displaydata();
-            window.location.reload();
+            this.displaylist()
         }
 
     }
+
+
     displaydata() {
-        let localdata = JSON.parse(localStorage.getItem("budget"));
-        let exp = localdata.reduce((acc, v) => acc + v.cost, 0);
-        let balance;
-        let displayref = document.getElementById("disp1");
-        let displayref2 = document.getElementById("disp2");
-        let displayref3 = document.getElementById("disp3");
+        // event.preventDefault();
 
-        localdata.map((v) => {
-            let tr = document.createElement("tr");
-            let td1 = document.createElement("td");
-            let td1t = document.createTextNode(v.name);
+        let localbudget = JSON.parse(localStorage.getItem("budget"));
+        console.log(localbudget);
 
-            td1.appendChild(td1t);
-            tr.appendChild(td1);
-            displayref.appendChild(tr);
-            let tr1 = document.createElement("tr");
-            let td2 = document.createElement("td");
-            let td2t = document.createTextNode(v.cost);
+        let localexpense = JSON.parse(localStorage.getItem("exp_list"));
+        console.log(localexpense);
 
-            td2.appendChild(td2t);
-            tr1.appendChild(td2);
+        let localtotal = JSON.parse(localStorage.getItem("balane"));
+        console.log(localtotal);
 
-            let btntr = document.createElement("tr");
-            let td3 = document.createElement("button");
-            let td3t = document.createTextNode("Delete");
-            td3.setAttribute('id', 'deletebtn');
-            td3.appendChild(td3t);
-            btntr.appendChild(td3);
+        if (localbudget != 0 && localbudget != null) {
+            console.log(localbudget);
+            let reduse;
 
-            let td4 = document.createElement("button");
-            let td4t = document.createTextNode("Edit");
-            td4.setAttribute('id', 'editbtn');
-            td4.appendChild(td4t);
-            btntr.appendChild(td4);
-            displayref3.appendChild(btntr);
+            if (localexpense) {
+                reduse = localexpense.reduse((acc, v) => acc + v.expence_amt, 0)
+            } else {
+                reduse = 0;
+            }
 
-            displayref2.appendChild(tr1);
+            console.log(reduse);
+            this.show_budget.innerHTML = localbudget;
+            this.show_expence.innerHTML = reduse;
+            this.show_total.innerHTML = localtotal - reduse;
+        } else {
+            let budgetvalue = parseInt(this.budget.textContent);
+            console.log(budgetvalue);
+            localStorage.setItem("budget", JSON.stringify(budgetvalue))
 
-            balance = v.balance - exp;
-            document.getElementById("ff1").innerHTML = '$' + v.balance;
-            window.onload = document.getElementById("budget").value = v.balance;
-        })
-        document.getElementById("ff2").innerHTML = '$' + exp;
-        document.getElementById("ff3").innerHTML = '$' + balance;
+            let exptamtvalue = parseInt(this.show_expence.textContent);
+            console.log(exptamtvalue);
+            localStorage.setItem("budget", JSON.stringify(exptamtvalue))
+
+            let total = budgetvalue - exptamtvalue;
+
+            console.log(total);
+            localStorage.setItem("balance", JSON.stringify(total));
+            this.show_total.innerHTML = total;
+
+        }
     }
 }
-class Expence extends Budget {
-    DisplayAll() {
-        this.displaydata()
+
+class Expense extends Budget {
+    constructor() {
+        super();
+
+        this.getexpense = document.querySelector("#expence");
+        this.getexp_amt = document.querySelector("#expenceamount");
     }
 
+    handlExpense() {
+        event.preventDefault();
+
+        let expence = this.getexpense.value;
+
+        let expence_amt = parseInt(this.getexp_amt.value);
+
+        let id = Math.floor(Math.random() * 1000)
+
+        let expencecheck = true;
+        let exp_amtcheck = true;
+
+        if (expence) {
+            if (expence == 'number') {
+                document.getElementById("error2").innerHTML = 'Please Enter Valid Expense Name'
+            } else {
+                document.getElementById("error2").innerHTML = ''
+                expencecheck = false;
+            }
+        } else {
+            document.getElementById("error2").innerHTML = 'Please Enter Expense Name'
+        }
+
+        if (expence_amt) {
+            if (expence_amt < 0) {
+                document.getElementById("error3").innerHTML = 'Please Enter Valid Expense';
+            } else {
+                document.getElementById("error3").innerHTML = '';
+                exp_amtcheck = false;
+
+                this.show_expence.innerHTML = expence_amt;
+
+            }
+        } else {
+            document.getElementById("error3").innerHTML = 'Please Enter Expense'
+        }
+
+        if (expencecheck == false && exp_amtcheck == false) {
+            let exp_list = JSON.parse(localStorage.getItem("exp_list"));
+            console.log(exp_list);
+        } else {
+            if (exp_list) {
+                exp_list.push({ id: id, exp_name, expence_amt: parseInt(expence_amt) });
+                localStorage.setItem('exp_list', JSON.stringify(exp_list));
+            } else {
+                localStorage.setItem("exp_list", JSON.stringify([{ id: id, exp_name: expence, expence_amt: parseInt(expence_amt) }]));
+            }
+            this.displaydata()
+        }
+        this.displaylist()
+    }
+
+    displaylist() {
+        let exp_list = JSON.parse(localStorage.getItem("exp_list"));
+
+        if (exp_list) {
+            let ulEle = document.getElementById("ul-list");
+
+            ulEle = ''
+
+            exp_list.map((v) => {
+
+                let liEle = document.createElement("li");
+
+                let spanTxtElem = document.createElement("span");
+                let spanTxt = document.createTextNode(v.exp_name);
+
+                let spanAmtElem = document.createElement("span");
+                let spanAmt = document.createTextNode(v.expence_amt);
+
+                let btnEdit = document.createElement("button");
+                let btnEditTxt = document.createTextNode("Edit");
+
+                let btnDelete = document.createElement("button");
+                let btnDeleteTxt = document.createTextNode("Delete");
+
+                spanTxtElem.appendChild(spanTxt);
+                spanAmtElem.appendChild(spanAmt);
+                btnEdit.appendChild(btnDeleteTxt);
+                btnDelete.appendChild(btnDeleteTxt);
+
+                liEle.appendChild(spanTxtElem);
+                liEle.appendChild(spanAmtElem);
+                liEle.appendChild(btnEdit);
+                liEle.appendChild(btnDelete);
+
+                ulEle.appendChild(liEle);
+            });
+        }
+    }
 }
 
-let b = new Budget();
+let e = new Expense()
+
+e.displaydata();
+e.displaylist();
+
+
 let budgetref = document.getElementById("budgetform");
+
 budgetref.addEventListener("submit", function () {
-    b.handlesubmit()
+    e.handlBudget();
 });
 
-let expformref = document.getElementById("expform");
-expformref.addEventListener("submit", function () {
-    b.handleexpnse();
-})
-let c = new Expence();
-c.DisplayAll();
 
+let expenseref = document.getElementById("expform");
+
+expenseref.addEventListener("submit", function () {
+    e.handlExpense();
+});

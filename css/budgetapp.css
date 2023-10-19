@@ -248,14 +248,14 @@ i {
 #error2 {
     color: red;
     font-size: 13px;
-    margin-left: 400px;
+    /* margin-left: 400px; */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #error3 {
     color: red;
     font-size: 13px;
-    margin-left: 380px;
+    /* margin-left: 380px; */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
