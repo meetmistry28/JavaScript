@@ -53,6 +53,11 @@ h2 {
   font-weight: bold;
 }
 
+#exp-list {
+  margin-left: 100px;
+  color: red;
+}
+
 #BudgetAM {
   color: green;
 }

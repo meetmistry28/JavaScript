@@ -1,192 +1,204 @@
 class Budget {
     constructor() {
-        this.getbudget = document.querySelector("#budget");
-
-        this.show_budget = document.querySelector("#ff1");
-        this.show_expence = document.querySelector("#ff2");
-        this.show_total = document.querySelector("#ff3");
-
+      this.budgetInput = document.querySelector("#BudgetAmount");
+      this.FinalBudget = document.querySelector("#BudgetAM");
+      this.ExpenseBalance = document.querySelector("#ExpenseAM");
+      this.FinalBalance = document.querySelector("#BalanceAM");
+  
+  
     }
-
-    handlBudget() {
-        event.preventDefault();
-
-        let budget = parseInt(tgis.getbudget.value);
-        console.log(show_budget);
-
-        if  (budget < 0 || budget === '' || isNaN(budget)) {
-            document.getElementById("error1").innerHTML = 'Please Enter Budget'
+  
+    BudgetForm() {
+      event.preventDefault();
+      let BAmount = parseInt(this.budgetInput.value);
+      if (BAmount <= 0 || isNaN(BAmount)) {
+        document.getElementById("Error").innerHTML =
+          "Please Enter a Valid Budget!";
+      } else {
+        document.getElementById("Error").innerHTML = "";
+        this.FinalBudget.innerHTML = BAmount;
+        this.budgetDisplayData();
+      }
+    }
+    budgetDisplayData() {
+      let localbudget = localStorage.getItem("budget");
+      let localexpense = JSON.parse(localStorage.getItem("exp_list"));
+      let localbalance = localStorage.getItem("balance");
+  
+      if (localbudget != 0 && localbudget !== null) {
+        let expenseAmt;
+        if (localexpense) {
+          expenseAmt = localexpense.reduce(
+            (acc, expense) => acc + parseFloat(expense.exAmount),
+            0
+          );
         } else {
-            document.getElementById("error1").innerHTML = ""
-
-            this.show_budget.innerHTML = budget;
-            this.displaydata();
-            this.displaylist()
+          expenseAmt = 0;
         }
-
+  
+        this.FinalBudget.innerHTML = localbudget;
+        this.ExpenseBalance.innerHTML = expenseAmt;
+        this.FinalBalance.innerHTML = parseInt(localbalance) - expenseAmt;
+      } else {
+        let budgetValue = parseInt(this.FinalBudget.textContent);
+        localStorage.setItem("budget", JSON.stringify(budgetValue));
+  
+        let expenseValue = parseInt(this.ExpenseBalance.textContent);
+  
+        localStorage.setItem("expense", JSON.stringify(expenseValue));
+  
+        let balanceValue = budgetValue - expenseValue;
+        localStorage.setItem("balance", JSON.stringify(balanceValue));
+  
+        this.FinalBalance.innerHTML = balanceValue;
+      }
     }
-
-
-    displaydata() {
-        // event.preventDefault();
-
-        let localbudget = JSON.parse(localStorage.getItem("budget"));
-        console.log(localbudget);
-
-        let localexpense = JSON.parse(localStorage.getItem("exp_list"));
-        console.log(localexpense);
-
-        let localtotal = JSON.parse(localStorage.getItem("balane"));
-        console.log(localtotal);
-
-        if (localbudget != 0 && localbudget != null) {
-            console.log(localbudget);
-            let reduse;
-
-            if (localexpense) {
-                reduse = localexpense.reduse((acc, v) => acc + v.expence_amt, 0)
-            } else {
-                reduse = 0;
-            }
-
-            console.log(reduse);
-            this.show_budget.innerHTML = localbudget;
-            this.show_expence.innerHTML = reduse;
-            this.show_total.innerHTML = localtotal - reduse;
-        } else {
-            let budgetvalue = parseInt(this.budget.textContent);
-            console.log(budgetvalue);
-            localStorage.setItem("budget", JSON.stringify(budgetvalue))
-
-            let exptamtvalue = parseInt(this.show_expence.textContent);
-            console.log(exptamtvalue);
-            localStorage.setItem("budget", JSON.stringify(exptamtvalue))
-
-            let total = budgetvalue - exptamtvalue;
-
-            console.log(total);
-            localStorage.setItem("balance", JSON.stringify(total));
-            this.show_total.innerHTML = total;
-
-        }
-    }
-}
-
-class Expense extends Budget {
+  }
+  
+  class Expense extends Budget {
     constructor() {
-        super();
-
-        this.getexpense = document.querySelector("#expence");
-        this.getexp_amt = document.querySelector("#expenceamount");
+      super();
+      this.expValueInput = document.querySelector("#ExpenseValue");
+      this.expAmoInput = document.querySelector("#ExpenseAmount");
+      this.updetIndex = null;
     }
-
-    handlExpense() {
-        event.preventDefault();
-
-        let expence = this.getexpense.value;
-
-        let expence_amt = parseInt(this.getexp_amt.value);
-
-        let id = Math.floor(Math.random() * 1000)
-
-        let expencecheck = true;
-        let exp_amtcheck = true;
-
-        if (expence) {
-            if (expence == 'number') {
-                document.getElementById("error2").innerHTML = 'Please Enter Valid Expense Name'
-            } else {
-                document.getElementById("error2").innerHTML = ''
-                expencecheck = false;
-            }
+    ExpenseForm() {
+      event.preventDefault();
+  
+      let expenseval = this.expValueInput.value;
+      let exAmountval = parseInt(this.expAmoInput.value);
+  
+      let expensevalE = true;
+      let exAmountvalE = true;
+  
+      if (expenseval === "") {
+        document.getElementById("ErrorEx").innerHTML =
+          "Please Enter a Valid Value!";
+      } else {
+        document.getElementById("ErrorEx").innerHTML = "";
+        expensevalE = false;
+        //this.expValueInput.innerHTML = expenseval;
+      }
+  
+      if (exAmountval <= 0 || exAmountval === "") {
+        document.getElementById("ErrorEx1").innerHTML =
+          "Please Enter a Valid Expense!";
+      } else {
+        document.getElementById("ErrorEx1").innerHTML = "";
+        exAmountvalE = false;
+        //this.expAmoInput.innerHTML = exAmountval;
+      }
+  
+      if (!expensevalE && !exAmountvalE) {
+        if (this.updetIndex) {
+          console.log("update task");
+          let locaData = JSON.parse(localStorage.getItem("exp_list"));
+          let index = locaData.findIndex((v) => v.id === this.updetIndex);
+          locaData[index] = {
+            id: this.updetIndex,
+            value: expenseval,
+            exAmount: parseInt(exAmountval),
+          };
+          localStorage.setItem("exp_list", JSON.stringify(locaData));
         } else {
-            document.getElementById("error2").innerHTML = 'Please Enter Expense Name'
-        }
-
-        if (expence_amt) {
-            if (expence_amt < 0) {
-                document.getElementById("error3").innerHTML = 'Please Enter Valid Expense';
-            } else {
-                document.getElementById("error3").innerHTML = '';
-                exp_amtcheck = false;
-
-                this.show_expence.innerHTML = expence_amt;
-
-            }
-        } else {
-            document.getElementById("error3").innerHTML = 'Please Enter Expense'
-        }
-
-        if (expencecheck == false && exp_amtcheck == false) {
-            let exp_list = JSON.parse(localStorage.getItem("exp_list"));
-            console.log(exp_list);
-        } else {
-            if (exp_list) {
-                exp_list.push({ id: id, exp_name, expence_amt: parseInt(expence_amt) });
-                localStorage.setItem('exp_list', JSON.stringify(exp_list));
-            } else {
-                localStorage.setItem("exp_list", JSON.stringify([{ id: id, exp_name: expence, expence_amt: parseInt(expence_amt) }]));
-            }
-            this.displaydata()
-        }
-        this.displaylist()
-    }
-
-    displaylist() {
-        let exp_list = JSON.parse(localStorage.getItem("exp_list"));
-
-        if (exp_list) {
-            let ulEle = document.getElementById("ul-list");
-
-            ulEle = ''
-
-            exp_list.map((v) => {
-
-                let liEle = document.createElement("li");
-
-                let spanTxtElem = document.createElement("span");
-                let spanTxt = document.createTextNode(v.exp_name);
-
-                let spanAmtElem = document.createElement("span");
-                let spanAmt = document.createTextNode(v.expence_amt);
-
-                let btnEdit = document.createElement("button");
-                let btnEditTxt = document.createTextNode("Edit");
-
-                let btnDelete = document.createElement("button");
-                let btnDeleteTxt = document.createTextNode("Delete");
-
-                spanTxtElem.appendChild(spanTxt);
-                spanAmtElem.appendChild(spanAmt);
-                btnEdit.appendChild(btnDeleteTxt);
-                btnDelete.appendChild(btnDeleteTxt);
-
-                liEle.appendChild(spanTxtElem);
-                liEle.appendChild(spanAmtElem);
-                liEle.appendChild(btnEdit);
-                liEle.appendChild(btnDelete);
-
-                ulEle.appendChild(liEle);
+          let localEx = JSON.parse(localStorage.getItem("exp_list"));
+  
+          let id = Math.floor(Math.random() * 1000);
+  
+          if (localEx) {
+            localEx.push({
+              id: id,
+              value: expenseval,
+              exAmount: parseInt(exAmountval),
             });
+            localStorage.setItem("exp_list", JSON.stringify(localEx));
+          } else {
+            localStorage.setItem(
+              "exp_list",
+              JSON.stringify([
+                { id: id, value: expenseval, exAmount: parseInt(exAmountval) },
+              ])
+            );
+          }
         }
+        this.budgetDisplayData();
+        this.DisplayExpense();
+        this.updetIndex = null;
+        this.expValueInput.value = "";
+        this.expAmoInput.value = "";
+        window.location.reload();
+      }
     }
-}
-
-let e = new Expense()
-
-e.displaydata();
-e.displaylist();
-
-
-let budgetref = document.getElementById("budgetform");
-
-budgetref.addEventListener("submit", function () {
-    e.handlBudget();
-});
-
-
-let expenseref = document.getElementById("expform");
-
-expenseref.addEventListener("submit", function () {
-    e.handlExpense();
-});
+  
+    DisplayExpense() {
+      let localEx = JSON.parse(localStorage.getItem("exp_list"));
+      console.log(localEx);
+      if (localEx) {
+        let ulRef = document.getElementById("exp-list");
+        ulRef.innerHTML = "";
+  
+        localEx.map((v) => {
+          let liElem = document.createElement("li");
+  
+          let spanNameElem = document.createElement("span");
+          let spanNameText = document.createTextNode(v.value);
+          spanNameElem.appendChild(spanNameText);
+  
+          let spanAmtElem = document.createElement("span");
+          let spanAmtText = document.createTextNode(v.exAmount);
+          spanAmtElem.appendChild(spanAmtText);
+  
+          let btnE = document.createElement("button");
+          btnE.addEventListener("click", () => this.handleEdit(v));
+          let btnTextE = document.createTextNode("EDIT");
+          btnE.appendChild(btnTextE);
+  
+          let btnD = document.createElement("button");
+          btnD.addEventListener("click", () => this.handleDelete(v.id));
+  
+          let btnTextD = document.createTextNode("DELETE");
+          btnD.appendChild(btnTextD);
+  
+          liElem.appendChild(spanNameElem);
+          liElem.appendChild(spanAmtElem);
+          liElem.appendChild(btnE);
+          liElem.appendChild(btnD);
+  
+          ulRef.appendChild(liElem);
+        });
+        
+      }
+    }
+  
+    handleDelete(id) {
+      let locaData = JSON.parse(localStorage.getItem("exp_list"));
+      let fData = locaData.filter((v) => v.id !== id);
+      localStorage.setItem("exp_list", JSON.stringify(fData));
+  
+      this.DisplayExpense();
+      this.budgetDisplayData();
+    }
+    
+    handleEdit(data) {
+      console.log(data);
+  
+      this.expValueInput.value = data.value;
+      this.expAmoInput.value = data.exAmount;
+      this.updetIndex = data.id;
+    }
+  }
+  
+  let e = new Expense();
+  e.budgetDisplayData();
+  e.DisplayExpense();
+  
+  let BudgetRef = document.getElementById("BudgetForm");
+  BudgetRef.addEventListener("submit", function () {
+    e.BudgetForm();
+  });
+  
+  let ExpenseRef = document.getElementById("ExpenseForm");
+  ExpenseRef.addEventListener("submit", function () {
+    e.ExpenseForm();
+  });
+  

@@ -1,96 +1,97 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/budgetapp.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>BUDGET APPLICATION</title>
+  <link rel="stylesheet" href="css/budget2.css" />
 </head>
+
 <body>
-    <div class="contener">
-        <h1>Badget App</h1>
-        <div class="box1">
-            <div class="balance1">
-               <div class="box5">
-                <form action="" id="budgetform">
-                    <span id="balance">Please Enter Your Badget</span>
-                    <br><br>
-                    <input type="number" id="budget">
-                    <span id="error1"></span>
-                    <br><br>
-                    <input type="submit" id="submit" value="Calculate">
-                </form>
-               </div>
+  <div class="container">
+    <h1>BUDGET APPLICATION</h1>
+    <div class="BUDGET">
+      <div class="row mb-5">
+        <div class="col-4">
+          <form action="" class="BudgetFormFirst" id="BudgetForm">
+            <div class="mb-3">
+              <label for="BudgetAmount" class="form-label lable">Please Enter Your Budget</label>
+              <input type="number" class="form-control" id="BudgetAmount" />
             </div>
-            <div class="balance2">
-                <div class="boxa">
-                    <span>BUDGET</span>
-                    <br><br>
-                    <p><i class="fa-solid fa-money-bill"></i></p>
-                    <br><br>
-                    <span class="ff1" id="ff1">$ 0</span>
-                </div>
-                <div class="boxa">
-                    <span>EXPENSES</span>
-                    <br><br>
-                    <p><i class="fa-regular fa-credit-card"></i></p>
-                    <br><br>
-                    <span class="ff2" id="ff2">$ 0</span>
-
-                </div>
-                <div class="boxa">
-                    <span>BALANCE</span>
-                    
-                    <br><br>
-                    <p><i class="fa-solid fa-dollar-sign"></i></p>
-                    <br><br>
-                    <span class="ff3" id="ff3">$ 0</span>
-
-                </div>
-            </div>
+            <p id="Error"></p>
+            <input type="submit" name="submit" value="Calculate" id="submitBudget" class="btn btn-outline-primary" />
+          </form>
         </div>
-        <div class="box2">
-            <div class="expence1">
-                <div class="box6">
-                    <form action="" id="expform">
-                    <span>Please Enter Your Expense</span>
-                    <br><br>
-                    <input type="text" id="expence">
-                    <span id="error2"></span>
-                    <br>
-                    <span>PLease Enter Expenses Amount</span>
-                    <br><br>
-                    <input type="number" id="expamount">
-                    <span id="error3"></span>
-                    <br>
-                    <input type="submit" id="submit1" value="Add Expense">
-                    </form>
-                </div>
+        <div class="col-8">
+          <div class="row">
+            <div class="col-4">
+              <h2>BUDGET</h2>
+              <i class="fas fa-money-bill fa-flip-both size-i" style="color: #2e4e84; padding-right: 1rem"></i>
+              <div class="amount">
+                <span>$</span>
+                <span id="BudgetAM">0</span>
+              </div>
             </div>
-            <div class="expence2">
-                <div class="exp1">
-                    <p>Expense-Title</p>
-                    <br><br>
-                    <table id="disp1"></table>
-                </div>
-                <div class="exp2">
-                    <p>Expense-Value</p>
-                    <br><br>
-                    <table id="disp2"></table>
-                </div>
-                <div class="exp3">
-                    <p id="action">action</p>
-                    <br><br>
-                    <table id="disp3"></table>
-                </div>
+            <div class="col-4">
+              <h2>EXPENSES</h2>
+              <i class="fas fa-wallet size-i" style="color: #2e4e84; padding-left: 2rem"></i>
+              <div class="amount">
+                <span>$</span>
+                <span id="ExpenseAM">0</span>
+              </div>
             </div>
-
-            <div id="ul-list">
-
+            <div class="col-4">
+              <h2>BALANCE</h2>
+              <i class="fas fa-dollar-sign size-i" style="color: #2e4e84; padding-left: 3rem"></i>
+              <div class="amount">
+                <span>$</span>
+                <span id="BalanceAM">0</span>
+              </div>
             </div>
-        </div>        
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <form action="" class="BudgetFormFirst" id="ExpenseForm">
+            <div class="mb-3">
+              <label for="ExpenseValue" class="form-label lable">Please Enter Your Expense</label>
+              <input type="text" class="form-control" id="ExpenseValue" />
+              <p id="ErrorEx"></p>
+              <label for="ExpenseAmount" class="form-label lable">Please Enter Expense Amount</label>
+              <input type="number" class="form-control" id="ExpenseAmount" />
+              <p id="ErrorEx1"></p>
+            </div>
+            <input type="submit" name="submit" value="Expense Calculate" id="submitExpense"
+              class="btn btn-outline-primary" />
+          </form>
+        </div>
+        <div class="col-8">
+          <div class="row" id="row">
+            <div class="expense-list d-flex justify-content-around" id="list_data">
+              <h4 class="text-center">Expense Title</h4>
+              <h4 class="text-center">Expense Amount</h4>
+              <!-- <h4 class="text-center">Edit</h4>    
+              <h4 class="text-center">Delete</h4> -->
+            </div>
+            
+          </div>
+          <ul id="exp-list"></ul>
+        </div>
+      </div>
     </div>
-    <script src="js/budgetapp.js"></script>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="js/budgetapp.js"></script>
 </body>
+
 </html>
