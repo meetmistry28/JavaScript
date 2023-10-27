@@ -6,8 +6,9 @@
     column-gap:normal
 
 } */
+
 h1 {
-  text-align: center;
+  /* text-align: ce nter; */
   margin-bottom: 5rem;
   margin-top: 3rem;
   color: #2e4e84;
@@ -18,7 +19,8 @@ h2 {
   font-size: 25px;
   font-weight: 400;
 }
-.BUDGET{
+
+.BUDGET {
   justify-content: space-between;
 }
 
@@ -26,11 +28,24 @@ h2 {
   font-size: 20px;
 }
 
+#BudgetForm {
+  box-shadow: 1.2px 3.2px 4.2px rgba(0, 0, 0, 0.5);;
+  border-style: none;
+  background-color: rgb(0, 194, 71);
+}
+
+#ExpenseForm {
+  box-shadow: 1.2px 3.2px 4.2px rgba(0, 0, 0, 0.5);;
+  border-style: none;
+  background-color: rgb(191, 45, 0);
+}
+
 .BudgetFormFirst {
   border: 1px solid rgb(27, 21, 21);
   padding: 20px;
   border-radius: 5px;
 }
+
 
 
 .size-i {
@@ -69,6 +84,7 @@ h2 {
 #BalanceAM {
   color: rgb(126, 126, 174);
 }
+
 /* .row .mb-5{
   margin-left: 5px;
 

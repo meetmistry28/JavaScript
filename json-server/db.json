@@ -1,24 +1,16 @@
 {
-  "posts": [
+  "Student": [
     {
-      "id": 1,
-      "title": "mistry",
-      "author": "ok"
+      "roll_no": 101,
+      "name": "meet",
+      "fees": 15000,
+      "id": 1
     },
     {
-      "id": 3,
-      "title": "Eons",
-      "author": "ok"
+      "roll_no": 101,
+      "name": "meet",
+      "fees": 1500,
+      "id": 2
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
