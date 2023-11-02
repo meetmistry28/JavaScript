@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(/image/shopping-cart-with-wooden-elements.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+    margin-left: 35px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+select {
+    background-color: rgb(38, 186, 38);
+    border-style: none;
+    border-radius: 15px;
+    padding: 10px;
+    margin-left: 280px;
+    font-size: 15px;
+}
+
+#search {
+    border-style: none;
+    border-radius: 15px;
+    padding: 10px;
+    margin-left: 280px;
+    height: 30px;
+    font-size: 15px;
+    width: 350px;
+    margin-top: 30px;
+}
+
+#submit {
+    height: 30px;
+    font-size: 15px;
+    width: 150px;
+    margin-top: 30px;
+}
+
+#deco {
+    background-color: rgb(0, 52, 57);
+    border-radius: 20px;
+    width: 250px;
+    height: 310px;
+    /* border: 1px solid black; */
+    box-shadow: 2px 4px rgb(86, 86, 86);
+    margin-top: 20px;
+    float: left;
+    padding: 20px;
+    justify-content: space-between;
+    margin-left: 32px;
+}
+
+#disp {
+    float: left;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+h3 {
+    font-size: 17px;
+    color: rgb(149, 149, 149);
+}
+
+p {
+    font-size: 17px;
+    margin-top: 15px;
+    color: rgb(0, 189, 0);
+}

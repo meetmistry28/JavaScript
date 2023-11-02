@@ -1,112 +1,131 @@
-let data = [
+let wishList = [];
+console.log(wishList);
+
+let product_data = [
     {
-        id: 1,
-        name: "laptop",
-        price: 70000
+        id: 101,
+        pro_name: 'Dell Vostro',
+        price: '$5000'
     },
 
     {
-        id: 2,
-        name: "Tv",
-        price: 50000
+        id: 102,
+        pro_name: 'Lenovo',
+        price: '$5500'
     },
 
     {
-        id: 3,
-        name: "Tablet",
-        price: 80000
-    },
-
-    {
-        id: 4,
-        name: "Watch",
-        price: 70000
-    },
-    // console.log("ok")
-
+        id: 103,
+        pro_name: 'HP pavilion',
+        price: '$6500'
+    }
 ]
 
-console.log(data);
+product_data.map((v, i) => {
+    console.log(v);
 
-let Favorites = [];
+    let DivRef = document.getElementById('product_disp');
 
-handliconClick = (iconElem, id) => {
-    if (iconElem.classList.contains("far")) {
-        iconElem.classList.remove("far");
-        iconElem.classList.add("fas");
-        addToFavorites(id);
+
+    let divElem = document.createElement('div');
+    divElem.setAttribute('class', 'box');
+
+    let wish_but = document.createElement('i');
+    wish_but.setAttribute('id', 'heart');
+    wish_but.setAttribute('class', 'fa-regular fa-heart');
+    wish_but.addEventListener('click', () => handleWishList(wish_but, v.id))
+
+    let id = document.createElement('h3');
+    let idTxt = document.createTextNode(v.id);
+    id.appendChild(idTxt);
+
+    let proName = document.createElement('h4');
+    let proNameTxt = document.createTextNode(v.pro_name);
+    proName.appendChild(proNameTxt);
+
+    let price = document.createElement('h4');
+    let priceTxt = document.createTextNode(v.price);
+    price.appendChild(priceTxt);
+
+    divElem.appendChild(wish_but);
+    divElem.appendChild(id);
+    divElem.appendChild(proName);
+    divElem.appendChild(price);
+
+
+    DivRef.appendChild(divElem);
+})
+
+handleWishList = (wish_but, id) => {
+
+    if (wish_but.classList.contains('fa-regular')) {
+        wish_but.classList.add('fa-solid');
+        wish_but.classList.remove('fa-regular');
+        addData(id);
     } else {
-        iconElem.classList.remove("fas");
-        iconElem.classList.add("far");
-        removeFromFavorites(id);
+        wish_but.classList.add('fa-regular');
+        wish_but.classList.remove('fa-solid');
+        removeData(id);
     }
 
-    displayFavorites();
-};
-
-addToFavorites = (id) => {
-    let product = data.find((item) => item.id === id);
-    if (product) {
-        Favorites.push(product);
-    }
-    displayFavorites()
-};
-
-removeFromFavorites = (id) => {
-    
-    let index = Favorites.findIndex((item) => item.id === id);
-    if (index !== -1) {
-        Favorites.slice((index, 0));
-    }
+    disp_wishList();
 }
 
-displayFavorites = () => {
-    let wishlist = document.getElementById("wishlist");
-    wishlist.innerHTML = "";
+addData = (id) => {
+    let product = product_data.find((v) => v.id === id);
+    console.log(product);
 
-    if (Favorites) {
-        let ulElem = document.createElement("ul")
-
-        Favorites.map((item) => {
-            
-            let liElem = document.createElement("li");
-
-            liElem.textContent = `${item.name} - Price: ${item.price}`;
-            ulElem.appendChild(liElem);
-            wishlist.appendChild(ulElem);
-
-        });
+    if (product) {
+        wishList.push(product);
+        console.log(wishList);
     }
-};
 
-displayData();
+    disp_wishList();
+}
 
+removeData = (id) => {
+    let index = wishList.findIndex((v) => v.id === id);
+    console.log(index);
 
-function displayData() {
-    let prodect = document.getElementById("res");
-    prodect.innerHTML = "";
+    wishList.splice(index, 1);
 
-    data.forEach((v) => {
-        let prodectDiv = document.createElement("div");
-        prodectDiv.className = "box";
+    console.log(wishList);
 
-        let nameElem = document.createElement("h2");
-        nameElem.textContent = (v.name)
+    disp_wishList();
+}
 
-        let iconElem = document.createElement("i");
-        iconElem.className = "fa-regular fa-heart";
+disp_wishList = () => {
 
-        iconElem.addEventListener("click", () => {
-            handliconClick(iconElem, v.id)
-        });
-        prodectDiv.appendChild(iconElem);
+    let ulRef = document.getElementById('list');
 
-        let priceElem = document.createElement("h4");
-        priceElem.textContent = `Price: ${v.price}`
+    ulRef.innerHTML = '';
 
-        prodectDiv.appendChild(nameElem);
-        prodectDiv.appendChild(priceElem);
-        prodect.appendChild(prodectDiv);
-    });
+    wishList.map((v) => {
+        console.log(v);
 
+        let li = document.createElement('li');
+        li.setAttribute('class','li');
+        
+        let spanId = document.createElement('span');
+        spanId.setAttribute('class','span');
+        let idtxt = document.createTextNode(v.id);
+        spanId.appendChild(idtxt)
+
+        let spanName = document.createElement('span');
+        let proNameTxt = document.createTextNode(v.pro_name);
+        spanName.setAttribute('class','span');
+        spanName.appendChild(proNameTxt);
+
+        let spanPrice = document.createElement('span');
+        let pricetxt = document.createTextNode(v.price);
+        spanPrice.setAttribute('class','span');
+        spanPrice.appendChild(pricetxt);
+        
+
+        li.appendChild(spanId);
+        li.appendChild(spanName);
+        li.appendChild(spanPrice);
+
+        ulRef.appendChild(li);
+    })
 }

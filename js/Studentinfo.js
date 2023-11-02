@@ -107,8 +107,8 @@ const displayData = () => {
                 data.map((v) => {
                     print += `<tr>`
                     print += `<td>${v.roll_no}</td><td>${v.name}</td><td>${v.fees}</td>`
-                    print += `<td><button onclick = "removeData(${v.id})">Delete</botton>
-                    <td><button onclick = editData('${JSON.stringify(v)}')>Edit</botton></td>`
+                    // print += `<td><button onclick = "removeData(${v.id})">Delete</botton>
+                    // <td><button onclick = editData('${JSON.stringify(v)}')>Edit</botton></td>`
                     print += `</tr>`
                 });
 
